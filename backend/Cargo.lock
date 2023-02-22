@@ -1032,4 +1032,15 @@ dependencies = [
 ]
 
 [[package]]
-na
+name = "ggml-sys"
+version = "0.2.0-dev"
+source = "git+https://github.com/rustformers/llm?branch=gguf#e61e5f9461d6c7a14455846bdeba13479e16f396"
+dependencies = [
+ "cc",
+]
+
+[[package]]
+name = "gimli"
+version = "0.28.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "42
