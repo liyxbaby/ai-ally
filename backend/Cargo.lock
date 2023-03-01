@@ -1422,4 +1422,16 @@ dependencies = [
 ]
 
 [[package]]
-name = "llm-bert
+name = "llm-bert"
+version = "0.2.0-dev"
+source = "git+https://github.com/rustformers/llm?branch=gguf#e61e5f9461d6c7a14455846bdeba13479e16f396"
+dependencies = [
+ "bytemuck",
+ "llm-base",
+ "tracing",
+]
+
+[[package]]
+name = "llm-bloom"
+version = "0.2.0-dev"
+source = "git+https://github.com/rustformers/llm?branch=gguf#e61e5f9461d6c7a14455846bde
