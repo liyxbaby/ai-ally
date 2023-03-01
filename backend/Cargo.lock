@@ -1476,4 +1476,21 @@ dependencies = [
 [[package]]
 name = "llm-mpt"
 version = "0.2.0-dev"
-source = "git+https://github.com/rustformers/llm?branch=gguf#e61e5f9461d6c7a1445584
+source = "git+https://github.com/rustformers/llm?branch=gguf#e61e5f9461d6c7a14455846bdeba13479e16f396"
+dependencies = [
+ "llm-base",
+]
+
+[[package]]
+name = "llm-samplers"
+version = "0.0.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7e85df656cd89e7702cb56171d75aa77c7bec828af7d2054d9987c34411cf896"
+dependencies = [
+ "anyhow",
+ "num-traits",
+ "rand",
+ "thiserror",
+]
+
+[
