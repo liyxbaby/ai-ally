@@ -1464,4 +1464,16 @@ dependencies = [
  "llm-base",
 ]
 
-[[package
+[[package]]
+name = "llm-llama"
+version = "0.2.0-dev"
+source = "git+https://github.com/rustformers/llm?branch=gguf#e61e5f9461d6c7a14455846bdeba13479e16f396"
+dependencies = [
+ "llm-base",
+ "tracing",
+]
+
+[[package]]
+name = "llm-mpt"
+version = "0.2.0-dev"
+source = "git+https://github.com/rustformers/llm?branch=gguf#e61e5f9461d6c7a1445584
