@@ -2490,4 +2490,20 @@ dependencies = [
 name = "tantivy"
 version = "0.21.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d6083cd7
+checksum = "d6083cd777fa94271b8ce0fe4533772cb8110c3044bab048d20f70108329a1f2"
+dependencies = [
+ "aho-corasick 1.1.2",
+ "arc-swap",
+ "async-trait",
+ "base64 0.21.7",
+ "bitpacking",
+ "byteorder",
+ "census",
+ "crc32fast",
+ "crossbeam-channel",
+ "downcast-rs",
+ "fastdivide",
+ "fs4",
+ "htmlescape",
+ "itertools 0.11.0",
+ "l
