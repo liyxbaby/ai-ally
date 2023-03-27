@@ -2542,4 +2542,20 @@ dependencies = [
 name = "tantivy-bitpacker"
 version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cecb164321482301f514dd582264fa67f70da2d7eb0
+checksum = "cecb164321482301f514dd582264fa67f70da2d7eb01872ccd71e35e0d96655a"
+dependencies = [
+ "bitpacking",
+]
+
+[[package]]
+name = "tantivy-columnar"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8d85f8019af9a78b3118c11298b36ffd21c2314bd76bbcd9d12e00124cbb7e70"
+dependencies = [
+ "fastdivide",
+ "fnv",
+ "itertools 0.11.0",
+ "serde",
+ "tantivy-bitpacker",
+ "tantivy-common
