@@ -2528,4 +2528,18 @@ dependencies = [
  "tantivy-columnar",
  "tantivy-common",
  "tantivy-fst",
- "tanti
+ "tantivy-query-grammar",
+ "tantivy-stacker",
+ "tantivy-tokenizer-api",
+ "tempfile",
+ "thiserror",
+ "time",
+ "uuid",
+ "winapi",
+]
+
+[[package]]
+name = "tantivy-bitpacker"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cecb164321482301f514dd582264fa67f70da2d7eb0
