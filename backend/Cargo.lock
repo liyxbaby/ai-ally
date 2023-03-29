@@ -2589,4 +2589,15 @@ dependencies = [
 
 [[package]]
 name = "tantivy-query-grammar"
-version
+version = "0.21.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1d39c5a03100ac10c96e0c8b07538e2ab8b17da56434ab348309b31f23fada77"
+dependencies = [
+ "nom",
+]
+
+[[package]]
+name = "tantivy-sstable"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fc0c1bb43e5e8b8e05eb8009610344dbf285f06066c
