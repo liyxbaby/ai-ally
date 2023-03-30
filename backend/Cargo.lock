@@ -2640,4 +2640,17 @@ dependencies = [
 [[package]]
 name = "tempfile"
 version = "3.10.1"
-source = "registry+https://github.com/rust-lang/crates.io-in
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "85b77fafb263dd9d05cbeac119526425676db3784113aa9295c88498cbf8bff1"
+dependencies = [
+ "cfg-if",
+ "fastrand",
+ "rustix",
+ "windows-sys 0.52.0",
+]
+
+[[package]]
+name = "thiserror"
+version = "1.0.58"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0346883
