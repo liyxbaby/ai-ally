@@ -18,4 +18,14 @@ use std::io::{Write, Read};
 
 #[get("/")]
 async fn index() -> HttpResponse {
-    HttpResponse::Ok().body(include_str!("../../dist/index.
+    HttpResponse::Ok().body(include_str!("../../dist/index.html"))
+}
+
+#[get("/assets/index-4rust.js")]
+async fn js() -> HttpResponse {
+    HttpResponse::Ok().content_type("application/javascript").body(include_str!("../../dist/assets/index-4rust.js"))
+}
+
+#[get("/assets/index-4rust2.js")]
+async fn js2() -> HttpResponse {
+    HttpResponse::Ok().content_type("application/javascript").body(in
