@@ -32,3 +32,13 @@ impl DialogueTuning {
             let ai_msg: String = row.get(1)?;
             Ok(Dialogue { user_msg, ai_msg })
         }
+        else {
+            Err(Error::QueryReturnedNoRows)
+        }
+    }
+
+    pub fn clear_dialogues() -> Result<usize, Error> {
+        let con = Connection::open("companion_database.db")?;
+        con.execute("DELETE FROM dialogue_tuning", [])
+    }
+}
