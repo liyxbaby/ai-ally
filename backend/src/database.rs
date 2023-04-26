@@ -302,3 +302,291 @@ impl Database {
                 ai: row.get(1)?,
                 content: row.get(2)?,
                 created_at: row.get(3)?,
+            })
+        })?;
+        let mut messages = Vec::new();
+        for row in rows {
+            messages.push(row?);
+        }
+        Ok(messages)
+    } */
+
+    pub fn get_x_messages(x: usize, index: usize) -> Result<Vec<Message>> {
+        let con = Connection::open("companion_database.db")?;
+        let mut stmt = con.prepare("SELECT id, ai, content, created_at FROM messages ORDER BY id DESC LIMIT ? OFFSET ?")?;
+        let rows = stmt.query_map([x, index], |row| {
+            Ok(Message {
+                id: row.get(0)?,
+                ai: row.get(1)?,
+                content: row.get(2)?,
+                created_at: row.get(3)?,
+            })
+        })?;
+        let mut messages = Vec::new();
+        for row in rows {
+            messages.push(row?);
+        }
+        Ok(messages.into_iter().rev().collect())
+    }
+
+    pub fn get_latest_message() -> Result<Message> {
+        let con = Connection::open("companion_database.db")?;
+        let mut stmt = con.prepare("SELECT id, ai, content, created_at FROM messages ORDER BY id DESC LIMIT 1")?;
+        let row = stmt.query_row([], |row| {
+            Ok(Message {
+                id: row.get(0)?,
+                ai: row.get(1)?,
+                content: row.get(2)?,
+                created_at: row.get(3)?,
+            })
+        })?;
+        Ok(row)
+    }
+
+    pub fn get_companion_data() -> Result<CompanionView> {
+        let con = Connection::open("companion_database.db")?;
+        let mut stmt = con.prepare("SELECT name, persona, example_dialogue, first_message, long_term_mem, short_term_mem, roleplay, dialogue_tuning, avatar_path FROM companion LIMIT 1")?;
+        let row = stmt.query_row([], |row| {
+            Ok(CompanionView {
+                name: row.get(0)?,
+                persona: row.get(1)?,
+                example_dialogue: row.get(2)?,
+                first_message: row.get(3)?,
+                long_term_mem: row.get(4)?,
+                short_term_mem: row.get(5)?,
+                roleplay: row.get(6)?,
+                dialogue_tuning: row.get(7)?,
+                avatar_path: row.get(8)?,
+            })
+        })?;
+        Ok(row)
+    }
+
+    pub fn get_companion_card_data() -> Result<CharacterCard> {
+        let con = Connection::open("companion_database.db")?;
+        let mut stmt = con.prepare("SELECT name, persona, first_message, example_dialogue FROM companion LIMIT 1")?;
+        let row = stmt.query_row([], |row| {
+            Ok(CharacterCard {
+                name: row.get(0)?,
+                description: row.get(1)?,
+                first_mes: row.get(2)?,
+                mes_example: row.get(3)?,
+            })
+        })?;
+        Ok(row)
+    }
+
+    pub fn get_user_data() -> Result<UserView> {
+        let con = Connection::open("companion_database.db")?;
+        let mut stmt = con.prepare("SELECT name, persona FROM user LIMIT 1")?;
+        let row: UserView = stmt.query_row([], |row| {
+            Ok(UserView {
+                name: row.get(0)?,
+                persona: row.get(1)?,
+            })
+        })?;
+        Ok(row)
+    }
+
+    pub fn get_message(id: i32) -> Result<Message> {
+        let con = Connection::open("companion_database.db")?;
+        let mut stmt = con.prepare("SELECT id, ai, content, created_at FROM messages WHERE id = ?")?;
+        let row = stmt.query_row([id], |row| {
+            Ok(Message {
+                id: row.get(0)?,
+                ai: row.get(1)?,
+                content: row.get(2)?,
+                created_at: row.get(3)?,
+            })
+        })?;
+        Ok(row)
+    }
+
+    pub fn insert_message(message: NewMessage) -> Result<(), Error> {
+        let con = Connection::open("companion_database.db")?;
+        con.execute(
+            &format!("INSERT INTO messages (ai, content, created_at) VALUES ({}, ?, ?)", message.ai),
+            &[
+                &message.content,
+                &get_current_date()
+            ]
+        )?;
+        Ok(())
+    }
+
+    pub fn edit_message(id: i32, message: NewMessage) -> Result<(), Error> {
+        let con = Connection::open("companion_database.db")?;
+        con.execute(
+            &format!("UPDATE messages SET ai = {}, content = ? WHERE id = ?", message.ai),
+            &[
+                &message.content,
+                &id.to_string()
+            ]
+        )?;
+        Ok(())
+    }
+
+    pub fn delete_message(id: i32) -> Result<(), Error> {
+        let con = Connection::open("companion_database.db")?;
+        con.execute(
+            "DELETE FROM messages WHERE id = ?",
+            [id],
+        )?;
+        Ok(())
+    }
+
+    pub fn delete_latest_message() -> Result<(), rusqlite::Error> {
+        let con = Connection::open("companion_database.db")?;
+        let last_message_id: i32 = con.query_row(
+            "SELECT id FROM messages ORDER BY id DESC LIMIT 1",
+            [],
+            |row| row.get(0)
+        )?;
+        con.execute(
+            "DELETE FROM messages WHERE id = ?",
+            [last_message_id]
+        )?;
+        Ok(())
+    }
+
+    pub fn erase_messages() -> Result<(), Error> {
+        let con = Connection::open("companion_database.db")?;
+        con.execute(
+            "DELETE FROM messages",
+            []
+        )?;
+        struct CompanionReturn {
+            name: String,
+            first_message: String
+        }
+        let companion_data = con.query_row("SELECT name, first_message FROM companion", [], |row| {
+            Ok(CompanionReturn {
+                name: row.get(0)?,
+                first_message: row.get(1)?
+               }
+            )
+        })?;
+        let user_name: String = con.query_row("SELECT name, persona FROM user LIMIT 1", [], |row| {
+            Ok(row.get(0)?)
+        })?;
+        con.execute(
+            "INSERT INTO messages (ai, content, created_at) VALUES (?, ?, ?)",
+            &[
+                "1",
+                &companion_data.first_message.replace("{{char}}", &companion_data.name).replace("{{user}}", &user_name),
+                &get_current_date()
+            ]
+        )?;
+        Ok(())
+    }
+
+    pub fn edit_companion(companion: CompanionView) -> Result<(), Error> {
+        let con = Connection::open("companion_database.db")?;
+        con.execute(
+            &format!("UPDATE companion SET name = ?, persona = ?, example_dialogue = ?, first_message = ?, long_term_mem = {}, short_term_mem = {}, roleplay = {}, dialogue_tuning = {}, avatar_path = ?", companion.long_term_mem, companion.short_term_mem, companion.roleplay, companion.dialogue_tuning),
+            &[
+                &companion.name,
+                &companion.persona,
+                &companion.example_dialogue,
+                &companion.first_message,
+                &companion.avatar_path,
+            ]
+        )?;
+        Ok(())
+    }
+
+    pub fn import_character_json(companion: CharacterCard) -> Result<(), Error> {
+        let con = Connection::open("companion_database.db")?;
+        con.execute(
+            "UPDATE companion SET name = ?, persona = ?, example_dialogue = ?, first_message = ?",
+            &[
+                &companion.name,
+                &companion.description,
+                &companion.mes_example,
+                &companion.first_mes
+            ]
+        )?;
+        Ok(())
+    }
+
+    pub fn import_character_card(companion: CharacterCard, image_path: &str) -> Result<(), Error> {
+        let con = Connection::open("companion_database.db")?;
+        con.execute(
+            "UPDATE companion SET name = ?, persona = ?, example_dialogue = ?, first_message = ?, avatar_path = ?",
+            &[
+                &companion.name,
+                &companion.description,
+                &companion.mes_example,
+                &companion.first_mes,
+                image_path
+            ]
+        )?;
+        Ok(())
+    }
+        
+
+    pub fn change_companion_avatar(avatar_path: &str) -> Result<(), Error> {
+        let con = Connection::open("companion_database.db")?;
+        con.execute(
+            "UPDATE companion SET avatar_path = ?",
+            &[
+                avatar_path,
+            ]
+        )?;
+        Ok(())
+    }
+
+    pub fn edit_user(user: UserView) -> Result<(), Error> {
+        let con = Connection::open("companion_database.db")?;
+        con.execute(
+            "UPDATE user SET name = ?, persona = ?",
+            &[
+                &user.name,
+                &user.persona,
+            ]
+        )?;
+        Ok(())
+    }
+
+    pub fn get_config() -> Result<ConfigView> {
+        let con = Connection::open("companion_database.db")?;
+        let mut stmt = con.prepare("SELECT device, llm_model_path, gpu_layers, prompt_template FROM config LIMIT 1")?;
+        let row = stmt.query_row([], |row| {
+            Ok(ConfigView {
+                device: row.get(0)?,
+                llm_model_path: row.get(1)?,
+                gpu_layers: row.get(2)?,
+                prompt_template: row.get(3)?
+            })
+        })?;
+        Ok(row)
+    }
+
+    pub fn change_config(config: ConfigModify) -> Result<(), Error> {
+        let device = match config.device.as_str() {
+            "CPU" => Device::CPU,
+            "GPU" => Device::GPU,
+            "Metal" => Device::Metal,
+            _ => return Err(rusqlite::Error::InvalidParameterName("Invalid device type".to_string())),
+        };
+    
+        let prompt_template = match config.prompt_template.as_str() {
+            "Default" => PromptTemplate::Default,
+            "Llama2" => PromptTemplate::Llama2,
+            "Mistral" => PromptTemplate::Mistral,
+            _ => return Err(rusqlite::Error::InvalidParameterName("Invalid prompt template type".to_string())),
+        };
+    
+        let con = Connection::open("companion_database.db")?;
+        con.execute(
+            "UPDATE config SET device = ?, llm_model_path = ?, gpu_layers = ?, prompt_template = ?",
+            &[
+                &device as &dyn ToSql,
+                &config.llm_model_path,
+                &config.gpu_layers,
+                &prompt_template as &dyn ToSql,
+            ]
+        )?;
+        Ok(())
+    }
+}
