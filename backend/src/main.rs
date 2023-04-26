@@ -38,3 +38,9 @@ async fn css() -> HttpResponse {
 
 #[get("/ai_companion_logo.jpg")]
 async fn project_logo() -> HttpResponse {
+    HttpResponse::Ok().content_type("image/jpeg").body(&include_bytes!("../../dist/ai_companion_logo.jpg")[..])
+}
+
+#[get("/assets/companion_avatar-4rust.jpg")]
+async fn companion_avatar_img() -> HttpResponse {
+    HttpResponse::Ok().content_type("image/jpeg").body(&include_bytes!("../../dist/assets/companion_avatar-
