@@ -28,4 +28,13 @@ async fn js() -> HttpResponse {
 
 #[get("/assets/index-4rust2.js")]
 async fn js2() -> HttpResponse {
-    HttpResponse::Ok().content_type("application/javascript").body(in
+    HttpResponse::Ok().content_type("application/javascript").body(include_str!("../../dist/assets/index-4rust2.js"))
+}
+
+#[get("/assets/index-4rust.css")]
+async fn css() -> HttpResponse {
+    HttpResponse::Ok().content_type("text/css").body(include_str!("../../dist/assets/index-4rust.css"))
+}
+
+#[get("/ai_companion_logo.jpg")]
+async fn project_logo() -> HttpResponse {
