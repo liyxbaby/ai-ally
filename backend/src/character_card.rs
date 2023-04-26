@@ -34,3 +34,13 @@ impl CharacterCard {
                 return Err(Box::<dyn std::error::Error>::from(format!("Error while decoding base64 character data from character card: {:?}", e)));
             }
         };
+        let character_text: &str = match std::str::from_utf8(&character_bytes) {
+            Ok(s) => s,
+            Err(e) => {
+                return Err(Box::<dyn std::error::Error>::from(format!("Error while parsing decoded base64 bytes to utf8 string: {:?}", e)));
+            }
+        };
+        let char_data: CharacterCard = serde_json::from_str(character_text).expect("Your image file does not contain correct json data");
+        Ok(char_data)
+    }
+}
