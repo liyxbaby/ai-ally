@@ -19,4 +19,9 @@ chrono = "0.4.37"
 png = "0.17.13"
 base64 = "0.22.0"
 rand = "0.8.5"
-llm = { git = "https://github.com/rustformer
+llm = { git = "https://github.com/rustformers/llm" , branch = "gguf" }
+
+[features]
+cublas = ["llm/cublas"]
+clblast = ["llm/clblast"]
+metal = ["llm/metal"]
