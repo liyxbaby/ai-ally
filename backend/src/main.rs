@@ -73,4 +73,12 @@ struct MessageQuery {
     limit: Option<usize>,
 }
 
-#[ge
+#[get("/api/message")]
+async fn message(query_params: web::Query<MessageQuery>) -> HttpResponse {
+    let start_index: usize = query_params.start_index.unwrap_or(0);
+
+    // 50 Messages is the max
+    let limit: usize = query_params.limit.unwrap_or(15).min(50);
+
+    // query to database, and return messages
+    let messag
