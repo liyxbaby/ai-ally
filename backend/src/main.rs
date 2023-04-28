@@ -81,4 +81,8 @@ async fn message(query_params: web::Query<MessageQuery>) -> HttpResponse {
     let limit: usize = query_params.limit.unwrap_or(15).min(50);
 
     // query to database, and return messages
-    let messag
+    let messages: Vec<Message> = match Database::get_x_messages(limit, start_index) {
+        Ok(v) => v,
+        Err(e) => {
+            println!("Failed to get messages from database: {}", e);
+            return HttpResponse::InternalServerError().body("Error while getting messages from database, check logs for more
