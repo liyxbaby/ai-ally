@@ -53,4 +53,24 @@ async fn companion_avatar_custom() -> actix_web::Result<actix_web::HttpResponse>
             let mut buffer = Vec::new();
             file.read_to_end(&mut buffer)?;
 
-            Ok(actix_web::HttpResponse
+            Ok(actix_web::HttpResponse::Ok()
+                .content_type("image/png")
+                .body(buffer))
+        }
+        Err(_) => Err(actix_web::error::ErrorNotFound("File not found")),
+    }
+}
+
+
+//              API
+
+
+//              Message
+
+#[derive(serde::Deserialize)]
+struct MessageQuery {
+    start_index: Option<usize>,
+    limit: Option<usize>,
+}
+
+#[ge
