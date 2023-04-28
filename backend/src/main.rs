@@ -43,4 +43,14 @@ async fn project_logo() -> HttpResponse {
 
 #[get("/assets/companion_avatar-4rust.jpg")]
 async fn companion_avatar_img() -> HttpResponse {
-    HttpResponse::Ok().content_type("image/jpeg").body(&include_bytes!("../../dist/assets/companion_avatar-
+    HttpResponse::Ok().content_type("image/jpeg").body(&include_bytes!("../../dist/assets/companion_avatar-4rust.jpg")[..])
+}
+
+#[get("/assets/avatar.png")]
+async fn companion_avatar_custom() -> actix_web::Result<actix_web::HttpResponse> {
+    match File::open("assets/avatar.png") {
+        Ok(mut file) => {
+            let mut buffer = Vec::new();
+            file.read_to_end(&mut buffer)?;
+
+            Ok(actix_web::HttpResponse
