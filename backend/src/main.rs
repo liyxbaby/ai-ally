@@ -127,4 +127,9 @@ async fn message_id(id: web::Path<i32>) -> HttpResponse {
     HttpResponse::Ok().body(message_json)
 }
 
-#[put("
+#[put("/api/message/{id}")]
+async fn message_put(id: web::Path<i32>, received: web::Json<NewMessage>) -> HttpResponse {
+    match Database::edit_message(*id, received.into_inner()) {
+        Ok(_) => HttpResponse::Ok().body(format!("Message edited at id {}!", id)),
+        Err(e) => {
+            println!("Failed to edit me
