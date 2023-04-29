@@ -85,4 +85,13 @@ async fn message(query_params: web::Query<MessageQuery>) -> HttpResponse {
         Ok(v) => v,
         Err(e) => {
             println!("Failed to get messages from database: {}", e);
-            return HttpResponse::InternalServerError().body("Error while getting messages from database, check logs for more
+            return HttpResponse::InternalServerError().body("Error while getting messages from database, check logs for more information");
+        },
+    };
+    let messages_json = serde_json::to_string(&messages).unwrap_or(String::from("Error serializing messages as JSON"));
+    HttpResponse::Ok().body(messages_json)
+}
+
+#[post("/api/message")]
+async fn message_post(received: web::Json<NewMessage>) -> HttpResponse {
+    match Database::insert_
