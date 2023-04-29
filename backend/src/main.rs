@@ -103,3 +103,10 @@ async fn message_post(received: web::Json<NewMessage>) -> HttpResponse {
     }
 }
 
+#[delete("/api/message")]
+async fn clear_messages() -> HttpResponse {
+    match Database::erase_messages() {
+        Ok(_) => HttpResponse::Ok().body("Chat log cleared!"),
+        Err(e) => {
+            println!("Failed to clear chat log: {}", e);
+            HttpResponse::InternalServerError().body("Error while
