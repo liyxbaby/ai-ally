@@ -119,4 +119,12 @@ async fn message_id(id: web::Path<i32>) -> HttpResponse {
     let msg: Message = match Database::get_message(*id) {
         Ok(v) => v,
         Err(e) => {
-            println!("Failed to get message at id {}: {}"
+            println!("Failed to get message at id {}: {}", id, e);
+            return HttpResponse::InternalServerError().body(format!("Error while getting message at id {}, check logs for more information", id));
+        }
+    };
+    let message_json = serde_json::to_string(&msg).unwrap_or(String::from("Error serializing message as JSON"));
+    HttpResponse::Ok().body(message_json)
+}
+
+#[put("
