@@ -94,4 +94,12 @@ async fn message(query_params: web::Query<MessageQuery>) -> HttpResponse {
 
 #[post("/api/message")]
 async fn message_post(received: web::Json<NewMessage>) -> HttpResponse {
-    match Database::insert_
+    match Database::insert_message(received.into_inner()) {
+        Ok(_) => HttpResponse::Ok().body("Message added!"),
+        Err(e) => {
+            println!("Failed to add message: {}", e);
+            HttpResponse::InternalServerError().body("Error while adding message, check logs for more information")
+        }
+    }
+}
+
