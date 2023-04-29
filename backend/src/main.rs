@@ -132,4 +132,13 @@ async fn message_put(id: web::Path<i32>, received: web::Json<NewMessage>) -> Htt
     match Database::edit_message(*id, received.into_inner()) {
         Ok(_) => HttpResponse::Ok().body(format!("Message edited at id {}!", id)),
         Err(e) => {
-            println!("Failed to edit me
+            println!("Failed to edit message at id {}: {}", id, e);
+            HttpResponse::InternalServerError().body(format!("Error while editing message at id {}, check logs for more information", id))
+        }
+    }
+}
+
+#[delete("/api/message/{id}")]
+async fn message_delete(id: web::Path<i32>) -> HttpResponse {
+    match Database::delete_message(*id) {
+        Ok(_) 
