@@ -109,4 +109,14 @@ async fn clear_messages() -> HttpResponse {
         Ok(_) => HttpResponse::Ok().body("Chat log cleared!"),
         Err(e) => {
             println!("Failed to clear chat log: {}", e);
-            HttpResponse::InternalServerError().body("Error while
+            HttpResponse::InternalServerError().body("Error while clearing chat log, check logs for more information")
+        }
+    }
+}
+
+#[get("/api/message/{id}")]
+async fn message_id(id: web::Path<i32>) -> HttpResponse {
+    let msg: Message = match Database::get_message(*id) {
+        Ok(v) => v,
+        Err(e) => {
+            println!("Failed to get message at id {}: {}"
