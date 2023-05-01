@@ -157,4 +157,12 @@ async fn companion() -> HttpResponse {
         Ok(v) => v,
         Err(e) => {
             println!("Failed to get companion data: {}", e);
-            return Http
+            return HttpResponse::InternalServerError().body("Error while getting companion data, check logs for more information");
+        }
+    };
+    let companion_json: String = serde_json::to_string(&companion_data).unwrap_or(String::from("Error serializing companion data as JSON"));
+    HttpResponse::Ok().body(companion_json)
+}
+
+#[put("/api/companion")]
+async fn 
