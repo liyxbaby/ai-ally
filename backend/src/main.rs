@@ -170,4 +170,11 @@ async fn companion_edit_data(received: web::Json<CompanionView>) -> HttpResponse
         Ok(_) => HttpResponse::Ok().body("Companion data edited!"),
         Err(e) => {
             println!("Failed to edit companion data: {}", e);
-            HttpResponse::Internal
+            HttpResponse::InternalServerError().body("Error while editing companion data, check logs for more information")
+        }
+    }
+}
+
+#[post("/api/companion/card")]
+async fn companion_card(mut received: actix_web::web::Payload) -> HttpResponse {
+    // curl -X POST -H "Content-Type: image/png" -T card.png http://localhost:3000/api/companion/ca
