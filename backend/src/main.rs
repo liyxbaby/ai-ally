@@ -141,4 +141,7 @@ async fn message_put(id: web::Path<i32>, received: web::Json<NewMessage>) -> Htt
 #[delete("/api/message/{id}")]
 async fn message_delete(id: web::Path<i32>) -> HttpResponse {
     match Database::delete_message(*id) {
-        Ok(_) 
+        Ok(_) => HttpResponse::Ok().body(format!("Message deleted at id {}!", id)),
+        Err(e) => {
+            println!("Failed to delete message at id {}: {}", id, e);
+            HttpResponse::InternalServerError().body(format!("Error while deleting message at id {}, check logs for more information", id))
