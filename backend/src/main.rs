@@ -145,3 +145,16 @@ async fn message_delete(id: web::Path<i32>) -> HttpResponse {
         Err(e) => {
             println!("Failed to delete message at id {}: {}", id, e);
             HttpResponse::InternalServerError().body(format!("Error while deleting message at id {}, check logs for more information", id))
+        }
+    }
+}
+
+//              Companion
+
+#[get("/api/companion")]
+async fn companion() -> HttpResponse {
+    let companion_data: CompanionView = match Database::get_companion_data() {
+        Ok(v) => v,
+        Err(e) => {
+            println!("Failed to get companion data: {}", e);
+            return Http
