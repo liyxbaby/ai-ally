@@ -198,4 +198,8 @@ async fn companion_card(mut received: actix_web::web::Payload) -> HttpResponse {
             return HttpResponse::InternalServerError().body("Error while importing character card, check logs for more information");
         }
     };
-    
+    match avatar_file.write_all(&data) {
+        Ok(_) => {},
+        Err(e) => {
+            eprintln!("Error while writing bytes to 'avatar.png' file in a 'assets' folder: {}", e);
+            return HttpResponse::InternalServerError().body("Error while importing character card, check logs for more informa
