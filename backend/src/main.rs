@@ -165,4 +165,9 @@ async fn companion() -> HttpResponse {
 }
 
 #[put("/api/companion")]
-async fn 
+async fn companion_edit_data(received: web::Json<CompanionView>) -> HttpResponse {
+    match Database::edit_companion(received.into_inner()) {
+        Ok(_) => HttpResponse::Ok().body("Companion data edited!"),
+        Err(e) => {
+            println!("Failed to edit companion data: {}", e);
+            HttpResponse::Internal
