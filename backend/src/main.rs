@@ -191,4 +191,11 @@ async fn companion_card(mut received: actix_web::web::Payload) -> HttpResponse {
         }
     };
     let character_name = character_card.name.to_string();
-    let mut avatar_file = match File::create("assets/a
+    let mut avatar_file = match File::create("assets/avatar.png") {
+        Ok(f) => f,
+        Err(e) => {
+            eprintln!("Error while creating 'avatar.png' file in a 'assets' folder: {}", e);
+            return HttpResponse::InternalServerError().body("Error while importing character card, check logs for more information");
+        }
+    };
+    
