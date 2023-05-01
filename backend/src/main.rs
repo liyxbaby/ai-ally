@@ -186,4 +186,9 @@ async fn companion_card(mut received: actix_web::web::Payload) -> HttpResponse {
     let character_card: CharacterCard = match CharacterCard::load_character_card(&data) {
         Ok(c) => c,
         Err(e) => {
-            eprintln!("Error while loading charac
+            eprintln!("Error while loading character card from a file: {}", e);
+            return HttpResponse::InternalServerError().body("Error while importing character card, check logs for more information");
+        }
+    };
+    let character_name = character_card.name.to_string();
+    let mut avatar_file = match File::create("assets/a
