@@ -218,4 +218,8 @@ async fn companion_card(mut received: actix_web::web::Payload) -> HttpResponse {
 }
 
 #[post("/api/companion/characterJson")]
-async fn companio
+async fn companion_character_json(received: web::Json<CharacterCard>) -> HttpResponse {
+    let character_name = received.name.to_string();
+    match Database::import_character_json(received.into_inner()) {
+        Ok(_) => {
+            println!("Character \"{}\" imported successfully! (from character JSON)", character_name
