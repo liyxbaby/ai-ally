@@ -241,4 +241,13 @@ async fn get_companion_character_json() -> HttpResponse {
         },
         Err(e) => {
             println!("Failed to get companion card data: {}", e);
-            return HttpResponse::InternalServerError().body("Error while getting companion card data, check log
+            return HttpResponse::InternalServerError().body("Error while getting companion card data, check logs for more information");
+        },
+    };
+}
+
+#[post("/api/companion/avatar")]
+async fn companion_avatar(mut received: actix_web::web::Payload) -> HttpResponse {
+    // curl -X POST -H "Content-Type: image/png" -T avatar.png http://localhost:3000/api/companion/avatar
+    let mut data = web::BytesMut::new();
+    while let So
