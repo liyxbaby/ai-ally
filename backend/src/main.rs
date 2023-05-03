@@ -250,4 +250,13 @@ async fn get_companion_character_json() -> HttpResponse {
 async fn companion_avatar(mut received: actix_web::web::Payload) -> HttpResponse {
     // curl -X POST -H "Content-Type: image/png" -T avatar.png http://localhost:3000/api/companion/avatar
     let mut data = web::BytesMut::new();
-    while let So
+    while let Some(chunk) = received.next().await {
+        let d = chunk.unwrap();
+        data.extend_from_slice(&d);
+    }
+    if fs::metadata("assets").is_err() {
+        match fs::create_dir("assets") {
+            Ok(_) => {},
+            Err(e) => {
+                eprintln!("Error while creating 'assets' directory: {}", e);
+                return HttpResponse::Inte
