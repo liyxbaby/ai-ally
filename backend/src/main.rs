@@ -259,4 +259,12 @@ async fn companion_avatar(mut received: actix_web::web::Payload) -> HttpResponse
             Ok(_) => {},
             Err(e) => {
                 eprintln!("Error while creating 'assets' directory: {}", e);
-                return HttpResponse::Inte
+                return HttpResponse::InternalServerError().body("Error while importing character card, check logs for more information");
+            }
+        };
+    }
+    let mut avatar_file = match File::create("assets/avatar.png") {
+        Ok(f) => f,
+        Err(e) => {
+            eprintln!("Error while creating 'avatar.png' file in a 'assets' folder: {}", e);
+          
