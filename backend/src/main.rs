@@ -236,4 +236,9 @@ async fn companion_character_json(received: web::Json<CharacterCard>) -> HttpRes
 async fn get_companion_character_json() -> HttpResponse {
     match Database::get_companion_card_data() {
         Ok(v) => { 
-            let character_json: String = serde_json::to_string_pretty(&v as &CharacterCard).unwrap_or(String::from("Error serializing compan
+            let character_json: String = serde_json::to_string_pretty(&v as &CharacterCard).unwrap_or(String::from("Error serializing companion data as JSON"));
+            return HttpResponse::Ok().body(character_json);
+        },
+        Err(e) => {
+            println!("Failed to get companion card data: {}", e);
+            return HttpResponse::InternalServerError().body("Error while getting companion card data, check log
