@@ -222,4 +222,14 @@ async fn companion_character_json(received: web::Json<CharacterCard>) -> HttpRes
     let character_name = received.name.to_string();
     match Database::import_character_json(received.into_inner()) {
         Ok(_) => {
-            println!("Character \"{}\" imported successfully! (from character JSON)", character_name
+            println!("Character \"{}\" imported successfully! (from character JSON)", character_name);
+            HttpResponse::Ok().body("Character json imported successfully!") 
+        },
+        Err(e) => {
+            println!("Failed to import character json: {}", e);
+            HttpResponse::InternalServerError().body("Error while importing character json, check logs for more information")
+        }
+    }
+}
+
+#[
