@@ -209,4 +209,13 @@ async fn companion_card(mut received: actix_web::web::Payload) -> HttpResponse {
         Ok(_) => {},
         Err(e) => {
             eprintln!("Error while changing companion avatar using character card: {}", e);
-            return HttpResponse::InternalServerError().body("Error w
+            return HttpResponse::InternalServerError().body("Error while importing character card, check logs for more information");
+        }
+    };
+    println!("Character \"{}\" imported successfully! (from character card)", character_name);
+    HttpResponse::Ok().body("Updated companion data via character card!")
+
+}
+
+#[post("/api/companion/characterJson")]
+async fn companio
