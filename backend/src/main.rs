@@ -345,4 +345,11 @@ async fn erase_long_term() -> HttpResponse {
     let ltm = match LongTermMem::connect() {
         Ok(v) => v,
         Err(e) => {
-            println!("Failed to connect to l
+            println!("Failed to connect to long term memory: {}", e);
+            return HttpResponse::InternalServerError().body("Error while connecting to long term memory, check logs for more information");
+        }
+    };
+    match ltm.erase_memory() {
+        Ok(_) => HttpResponse::Ok().body("Long term memory cleared!"),
+        Err(e) => {
+    
