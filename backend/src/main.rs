@@ -328,4 +328,11 @@ async fn add_memory_long_term_message(received: web::Json<LongTermMemMessage>) -
         Ok(v) => v,
         Err(e) => {
             println!("Failed to connect to long term memory: {}", e);
-            return HttpResponse::InternalServerError().body("E
+            return HttpResponse::InternalServerError().body("Error while connecting to long term memory, check logs for more information");
+        }
+    };
+    match ltm.add_entry(&received.into_inner().entry) {
+        Ok(_) => HttpResponse::Ok().body("Long term memory entry added!"),
+        Err(e) => {
+            println!("Failed to add long term memory entry: {}", e);
+            Ht
