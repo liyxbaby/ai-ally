@@ -280,4 +280,14 @@ async fn companion_avatar(mut received: actix_web::web::Payload) -> HttpResponse
     match Database::change_companion_avatar("assets/avatar.png") {
         Ok(_) => {},
         Err(e) => {
-            eprintln!("Error
+            eprintln!("Error while changing companion avatar: {}", e);
+            return HttpResponse::InternalServerError().body("Error while changing companion avatar, check logs for more information");
+        }
+    };
+    HttpResponse::Ok().body("Companion avatar changed!")
+}
+
+//              User
+
+#[get("/api/user")]
+async fn user
