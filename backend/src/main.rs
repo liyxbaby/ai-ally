@@ -298,4 +298,13 @@ async fn user() -> HttpResponse {
             return HttpResponse::InternalServerError().finish();
         }
     };
-    let user_json: String = serde_json::to_string(
+    let user_json: String = serde_json::to_string(&user_data).unwrap_or(String::from("Error serializing user data as JSON"));
+    HttpResponse::Ok().body(user_json)
+}
+
+#[put("/api/user")]
+async fn user_put(received: web::Json<UserView>) -> HttpResponse {
+    match Database::edit_user(received.into_inner()) {
+        Ok(_) => HttpResponse::Ok().body("User data edited!"),
+        Err(e) => {
+           
