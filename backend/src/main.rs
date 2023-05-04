@@ -335,4 +335,14 @@ async fn add_memory_long_term_message(received: web::Json<LongTermMemMessage>) -
         Ok(_) => HttpResponse::Ok().body("Long term memory entry added!"),
         Err(e) => {
             println!("Failed to add long term memory entry: {}", e);
-            Ht
+            HttpResponse::InternalServerError().body("Error while adding long term memory entry, check logs for more information")
+        }
+    }
+}
+
+#[delete("/api/memory/longTerm")]
+async fn erase_long_term() -> HttpResponse {
+    let ltm = match LongTermMem::connect() {
+        Ok(v) => v,
+        Err(e) => {
+            println!("Failed to connect to l
