@@ -290,4 +290,12 @@ async fn companion_avatar(mut received: actix_web::web::Payload) -> HttpResponse
 //              User
 
 #[get("/api/user")]
-async fn user
+async fn user() -> HttpResponse {
+    let user_data: UserView = match Database::get_user_data() {
+        Ok(v) => v,
+        Err(e) => {
+            println!("Failed to get user data: {}", e);
+            return HttpResponse::InternalServerError().finish();
+        }
+    };
+    let user_json: String = serde_json::to_string(
