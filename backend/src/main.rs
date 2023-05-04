@@ -307,4 +307,20 @@ async fn user_put(received: web::Json<UserView>) -> HttpResponse {
     match Database::edit_user(received.into_inner()) {
         Ok(_) => HttpResponse::Ok().body("User data edited!"),
         Err(e) => {
-           
+            println!("Failed to edit user data: {}", e);
+            HttpResponse::InternalServerError().body("Error while editing user data, check logs for more information")
+        }
+    }
+}
+
+
+
+//              Memory
+
+#[derive(Deserialize)]
+struct LongTermMemMessage {
+    entry: String
+}
+
+#[post("/api/memory/longTerm")]
+async fn a
