@@ -323,4 +323,9 @@ struct LongTermMemMessage {
 }
 
 #[post("/api/memory/longTerm")]
-async fn a
+async fn add_memory_long_term_message(received: web::Json<LongTermMemMessage>) -> HttpResponse {
+    let ltm = match LongTermMem::connect() {
+        Ok(v) => v,
+        Err(e) => {
+            println!("Failed to connect to long term memory: {}", e);
+            return HttpResponse::InternalServerError().body("E
