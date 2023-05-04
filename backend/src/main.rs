@@ -352,4 +352,13 @@ async fn erase_long_term() -> HttpResponse {
     match ltm.erase_memory() {
         Ok(_) => HttpResponse::Ok().body("Long term memory cleared!"),
         Err(e) => {
-    
+            println!("Failed to clear long term memory: {}", e);
+            HttpResponse::InternalServerError().body("Error while clearing long term memory, check logs for more information")
+        }
+    }
+}
+
+#[post("/api/memory/dialogueTuning")]
+async fn add_tuning_message() -> HttpResponse {
+    let messages = match Database::get_x_messages(2, 0) {
+        Ok(
