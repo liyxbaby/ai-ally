@@ -367,4 +367,8 @@ async fn add_tuning_message() -> HttpResponse {
             return HttpResponse::InternalServerError().body("Error while getting last 2 messages from database, check logs for more information");
         }
     };
-    match DialogueTuning::insert(&messages[0].content, &messages[1].conte
+    match DialogueTuning::insert(&messages[0].content, &messages[1].content) {
+        Ok(_) => HttpResponse::Ok().body("Saved previous dialogue as template dialogue"),
+        Err(e) => {
+            println!("Failed to save previous dialogue as template dialogue: {}", e);
+            HttpResponse::InternalServerError().body("Error while saving previous dialogue as template dialogue, check logs for
