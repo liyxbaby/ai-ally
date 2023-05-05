@@ -361,4 +361,10 @@ async fn erase_long_term() -> HttpResponse {
 #[post("/api/memory/dialogueTuning")]
 async fn add_tuning_message() -> HttpResponse {
     let messages = match Database::get_x_messages(2, 0) {
-        Ok(
+        Ok(v) => v,
+        Err(e) => {
+            println!("Failed to get last 2 messages from database: {}", e);
+            return HttpResponse::InternalServerError().body("Error while getting last 2 messages from database, check logs for more information");
+        }
+    };
+    match DialogueTuning::insert(&messages[0].content, &messages[1].conte
