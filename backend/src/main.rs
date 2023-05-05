@@ -381,4 +381,19 @@ async fn erase_tuning_message() -> HttpResponse {
     match DialogueTuning::clear_dialogues() {
         Ok(_) => HttpResponse::Ok().body("Dialogue tuning memory cleared!"),
         Err(e) => {
-            println!(
+            println!("Failed to clear dialogue tuning: {}", e);
+            HttpResponse::InternalServerError().body("Error while clearing dialogue tuning, check logs for more information")
+        }
+    }
+}
+
+
+//              Prompting
+
+#[derive(Deserialize)]
+struct Prompt {
+    prompt: String
+}
+
+#[post("/api/prompt")]
+async
