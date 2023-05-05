@@ -371,4 +371,14 @@ async fn add_tuning_message() -> HttpResponse {
         Ok(_) => HttpResponse::Ok().body("Saved previous dialogue as template dialogue"),
         Err(e) => {
             println!("Failed to save previous dialogue as template dialogue: {}", e);
-            HttpResponse::InternalServerError().body("Error while saving previous dialogue as template dialogue, check logs for
+            HttpResponse::InternalServerError().body("Error while saving previous dialogue as template dialogue, check logs for more information")
+        }
+    }
+}
+
+#[delete("/api/memory/dialogueTuning")]
+async fn erase_tuning_message() -> HttpResponse {
+    match DialogueTuning::clear_dialogues() {
+        Ok(_) => HttpResponse::Ok().body("Dialogue tuning memory cleared!"),
+        Err(e) => {
+            println!(
