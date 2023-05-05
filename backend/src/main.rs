@@ -396,4 +396,9 @@ struct Prompt {
 }
 
 #[post("/api/prompt")]
-async
+async fn prompt_message(received: web::Json<Prompt>) -> HttpResponse {
+    let prompt_message = received.into_inner().prompt.clone();
+    match Database::insert_message(NewMessage { ai: false, content: prompt_message.to_string() }) {
+        Ok(_) => {}
+        Err(e) => {
+            eprintln!("Failed to add message to databas
