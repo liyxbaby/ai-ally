@@ -418,3 +418,11 @@ async fn prompt_message(received: web::Json<Prompt>) -> HttpResponse {
 async fn regenerate_prompt() -> HttpResponse {
     match Database::delete_latest_message() {
         Ok(_) => {},
+        Err(e) => {
+            println!("Failed to delete latest message: {}", e);
+            return HttpResponse::InternalServerError().body("Error while deleting latest message, check logs for more information");
+        }
+    }
+    let prompt_msg: String = match Database::get_latest_message() {
+        Ok(v) => v.content,
+    
