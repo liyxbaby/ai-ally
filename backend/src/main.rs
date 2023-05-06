@@ -425,4 +425,11 @@ async fn regenerate_prompt() -> HttpResponse {
     }
     let prompt_msg: String = match Database::get_latest_message() {
         Ok(v) => v.content,
-    
+        Err(e) => {
+            println!("Failed to get latest message: {}", e);
+            return HttpResponse::InternalServerError().body("Error while getting latest message, check logs for more information");
+        }
+    };
+    match prompt(&prompt_msg) {
+        Ok(v) => HttpResponse::Ok().body(v),
+        Err(e
