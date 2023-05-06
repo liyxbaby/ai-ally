@@ -409,3 +409,12 @@ async fn prompt_message(received: web::Json<Prompt>) -> HttpResponse {
         Ok(v) => HttpResponse::Ok().body(v),
         Err(e) => {
             println!("Failed to generate prompt: {}", e);
+            HttpResponse::InternalServerError().body("Error while generating prompt, check logs for more information")
+        }
+    }
+}
+
+#[get("/api/prompt/regenerate")]
+async fn regenerate_prompt() -> HttpResponse {
+    match Database::delete_latest_message() {
+        Ok(_) => {},
