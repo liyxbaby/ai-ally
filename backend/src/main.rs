@@ -432,4 +432,15 @@ async fn regenerate_prompt() -> HttpResponse {
     };
     match prompt(&prompt_msg) {
         Ok(v) => HttpResponse::Ok().body(v),
-        Err(e
+        Err(e) => {
+            println!("Failed to re-generate prompt: {}", e);
+            HttpResponse::InternalServerError().body("Error while generating prompt, check logs for more information")
+        }
+    }
+}
+
+//              Config
+
+#[get("/api/config")]
+async fn config() -> HttpResponse {
+    let config = match Database::get_config()
