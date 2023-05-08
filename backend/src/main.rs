@@ -510,4 +510,11 @@ async fn main() -> std::io::Result<()> {
             .service(message_post)
             .service(companion)
             .service(companion_edit_data)
-            .servic
+            .service(companion_card)
+            .service(companion_character_json)
+            .service(get_companion_character_json)
+            .service(companion_avatar)
+            .service(user)
+            .service(user_put)
+            .service(add_memory_long_term_message)
+            
