@@ -459,4 +459,16 @@ async fn config_post(received: web::Json<ConfigModify>) -> HttpResponse {
     match Database::change_config(received.into_inner()) {
         Ok(_) => HttpResponse::Ok().body("Config updated!"),
         Err(e) => {
-    
+            println!("Failed to update config: {}", e);
+            HttpResponse::InternalServerError().body("Error while updating config, check logs for more information")
+        }
+    }
+}
+
+//
+
+#[actix_web::main]
+async fn main() -> std::io::Result<()> {
+
+    let port: u16 = 3000;
+    let hostname: &str = "0.0.
