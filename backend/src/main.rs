@@ -443,4 +443,11 @@ async fn regenerate_prompt() -> HttpResponse {
 
 #[get("/api/config")]
 async fn config() -> HttpResponse {
-    let config = match Database::get_config()
+    let config = match Database::get_config() {
+        Ok(v) => v,
+        Err(e) => {
+            println!("Failed to get config: {}", e);
+            return HttpResponse::InternalServerError().body("Error while getting config, check logs for more information");
+        }
+    };
+    let config_json = serde_json::to_string(&config).unwrap_or(St
