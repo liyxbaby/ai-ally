@@ -517,4 +517,15 @@ async fn main() -> std::io::Result<()> {
             .service(user)
             .service(user_put)
             .service(add_memory_long_term_message)
-            
+            .service(erase_long_term)
+            .service(add_tuning_message)
+            .service(erase_tuning_message)
+            .service(prompt_message)
+            .service(regenerate_prompt)
+            .service(config)
+            .service(config_post)
+    })
+    .bind((hostname, port))?
+    .run()
+    .await
+}
