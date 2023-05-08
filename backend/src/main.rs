@@ -492,4 +492,13 @@ async fn main() -> std::io::Result<()> {
 
     println!("Listening on:\n  -> http://{}:{}/", hostname, port);
     println!("  -> http://localhost:{}/\n", port);
-    println!("https://
+    println!("https://github.com/Hukasx0/ai-companion\n   By Hubert \"Hukasx0\" Kasperek\n");
+    HttpServer::new(|| {
+        App::new()
+            .service(index)
+            .service(js)
+            .service(js2)
+            .service(css)
+            .service(project_logo)
+            .service(companion_avatar_img)
+       
