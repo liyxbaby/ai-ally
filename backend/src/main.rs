@@ -501,4 +501,13 @@ async fn main() -> std::io::Result<()> {
             .service(css)
             .service(project_logo)
             .service(companion_avatar_img)
-       
+            .service(companion_avatar_custom)
+            .service(message)
+            .service(clear_messages)
+            .service(message_id)
+            .service(message_put)
+            .service(message_delete)
+            .service(message_post)
+            .service(companion)
+            .service(companion_edit_data)
+            .servic
