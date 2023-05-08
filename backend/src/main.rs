@@ -484,4 +484,12 @@ async fn main() -> std::io::Result<()> {
     }
 
     match DialogueTuning::create() {
-      
+        Ok(_) => { }
+        Err(e) => eprintln!("⚠️ Failed to create dialogue tuning table in sqlite database: {}\n", e),
+    }
+
+    println!("AI Companion v1 successfully launched! 🚀\n");
+
+    println!("Listening on:\n  -> http://{}:{}/", hostname, port);
+    println!("  -> http://localhost:{}/\n", port);
+    println!("https://
