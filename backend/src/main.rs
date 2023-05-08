@@ -450,4 +450,13 @@ async fn config() -> HttpResponse {
             return HttpResponse::InternalServerError().body("Error while getting config, check logs for more information");
         }
     };
-    let config_json = serde_json::to_string(&config).unwrap_or(St
+    let config_json = serde_json::to_string(&config).unwrap_or(String::from("Error serializing config as JSON"));
+    HttpResponse::Ok().body(config_json)
+}
+
+#[put("/api/config")]
+async fn config_post(received: web::Json<ConfigModify>) -> HttpResponse {
+    match Database::change_config(received.into_inner()) {
+        Ok(_) => HttpResponse::Ok().body("Config updated!"),
+        Err(e) => {
+    
