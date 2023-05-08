@@ -471,4 +471,17 @@ async fn config_post(received: web::Json<ConfigModify>) -> HttpResponse {
 async fn main() -> std::io::Result<()> {
 
     let port: u16 = 3000;
-    let hostname: &str = "0.0.
+    let hostname: &str = "0.0.0.0";
+
+    match Database::new() {
+        Ok(_) => { }
+        Err(e) => eprintln!("⚠️ Failed to connect to sqlite database: {}\n", e),
+    }
+
+    match LongTermMem::connect() {
+        Ok(_) => { }
+        Err(e) => eprintln!("⚠️ Failed to connect to tantivy: {}\n", e),
+    }
+
+    match DialogueTuning::create() {
+      
