@@ -360,3 +360,99 @@ The base URL for accessing the Companion API is `http://localhost:3000/api` or `
 #### 5.1 Add entry to long-term memory
 
 - **URL:** `/memory/longTerm`
+- **Method:** `POST`
+- **Description:** Add data to ai long-term memory
+- **Request Body:**
+  - `entry` (string): Information that you want to save in your companion's long-term memory, I recommend breaking large pieces of text into parts
+- **Response:**
+  - Status: 200 OK
+  - Body: Long term memory entry added!
+- **Example Request:**
+  ```http
+  PUT /memory/longTerm
+  Content-Type: application/json
+
+  {
+    "entry": "AI Companion is a project that aims to provide a quick, simple, light and convenient way to create AI chatbots on your local computer"
+  }
+  ```
+
+#### 5.2 Erase long-term memory
+
+- **URL:** `/memory/longTerm`
+- **Method:** `DELETE`
+- **Description:** Clear long term memory.
+- **Response:**
+  - Status: 200 OK
+  - Body: Long term memory cleared!
+- **Example Request:**
+  ```http
+  DELETE /memory/longTerm
+  ```
+
+#### 5.3 Add last dialogue to dialogue tuning
+
+- **URL:** `/memory/dialogueTuning`
+- **Method:** `POST`
+- **Description:** Adds the user's previous message and AI's response as dialogue tuning
+- **Response:**
+  - Status: 200 OK
+  - Body: Saved previous dialogue as template dialogue
+- **Example Request:**
+  ```http
+  POST /memory/dialogueTuing
+  ```
+
+#### 5.4 Erase dialogue tuning entries
+
+  - **URL:** `/memory/dialogueTuning`
+- **Method:** `DELETE`
+- **Description:** Clear all dialogue tuning entries.
+- **Response:**
+  - Status: 200 OK
+  - Body: Dialogue tuning memory cleared!
+- **Example Request:**
+  ```http
+  DELETE /memory/dialogueTuning
+  ```
+
+### 6. Prompting
+
+#### 6.1 Update Configuration
+
+- **URL:** `/prompt`
+- **Method:** `POST`
+- **Description:** Prompt the ai, (message and response are saved in short-term, long-term memory and chat log)
+- **Request Body:**
+  - `prompt` (string): Prompt to the AI
+- **Response:**
+  - Status: 200 OK
+  - Body: generated text
+- **Example Request:**
+  ```http
+  POST /prompt
+  Content-Type: application/json
+
+  {
+    "prompt": "what time is it currently?"
+  }
+  ```
+
+#### 6.2 Update Configuration
+
+- **URL:** `/prompt/regenerate`
+- **Method:** `GET`
+- **Description:** Regenerate answer to your AI prompt (answer is saved in short-term, long-term memory and chat log)
+- **Response:**
+  - Status: 200 OK
+  - Body: generated text
+- **Example Request:**
+  ```http
+  GET /prompt/regenerate
+  ```
+
+---
+
+AI Companion v1
+
+2024 Hubert Kasperek
