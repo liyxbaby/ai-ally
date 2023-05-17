@@ -5,4 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "dev-rs": "tsc && vite build && cargo watc
+    "dev-rs": "tsc && vite build && cargo watch -C backend -x run",
+    "build": "tsc && vite build",
+    "build-full": "tsc && vite build && cargo build --release --manifest-path=backend/Cargo.toml",
+    "build-full-cuda": "tsc && vite build && cargo build --release --features cublas --manifest-path=backend/Cargo.toml",
+    "build-full-opencl": "tsc && vite build && cargo build -
