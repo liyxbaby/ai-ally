@@ -102,3 +102,63 @@ const ChatWindow = () => {
         await refreshMessages();
         setUserMessage('');
         setCompanionMessage('');
+        setIsImpersonating(false);
+      }
+
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast.error(`Error while sending a message: ${error}`);
+    }
+  };
+
+  const toggleImpersonateMode = () => {
+    setIsImpersonating(!isImpersonating);
+    if (!isImpersonating) {
+      setPrevUserMessage(userMessage);
+      setUserMessage('');
+    } else {
+      setUserMessage(prevUserMessage);
+    }
+  };
+
+    return (
+        <>
+        <div className='w-full flex justify-end'>
+            <ModeToggle />
+          </div>
+          <div className='flex flex-row items-center gap-5'>
+          <Avatar>
+            <AvatarImage src={companionData.avatar_path || companionAvatar} alt="Companion Avatar" />
+            <AvatarFallback>AI</AvatarFallback>
+          </Avatar>
+          <EditDataPopup />
+          </div>
+          <MessageScroll />
+          <div className="flex flex-row w-full items-center gap-2">
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+            <Button variant="outline" size={"sm"}>
+                <Menu />
+            </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent side="top">
+                <DropdownMenuItem onClick={toggleImpersonateMode}>{isImpersonating ? 'Stop impersonating' : 'Impersonate'}</DropdownMenuItem>
+            </DropdownMenuContent>
+        </DropdownMenu>
+        <Textarea value={isImpersonating ? companionMessage : userMessage} onChange={handleMessageChange} cols={1} placeholder={isImpersonating ? `🥸 Type your message as ${companionData?.name}` : "Type your message"} onKeyDown={handleKeyDown} />
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button size={"sm"} onClick={() => {isImpersonating ? sendMessageAsAi() : promptMessage()}}><SendHorizontal /></Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{isImpersonating ? `Send message as ${companionData?.name}` : "Send message"}</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+          </div>
+        </>
+    )
+}
+
+export default ChatWindow;
