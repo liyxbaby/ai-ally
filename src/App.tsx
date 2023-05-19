@@ -19,4 +19,16 @@ function App() {
             <MessagesProvider>
               <div className='max-container'>
                 <ChatWindow />
-              </
+              </div>
+              <Toaster />
+            </MessagesProvider>
+          </CompanionDataProvider>
+        </UserDataProvider>
+      </ConfigProvider>
+      <Footer />
+    </ThemeProvider>
+  )
+}
+
+
+export default App
