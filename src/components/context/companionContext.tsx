@@ -3,4 +3,14 @@ import { CompanionData } from '../interfaces/CompanionData';
 import { toast } from "sonner";
 
 interface CompanionDataProviderProps {
-  chil
+  children: ReactNode;
+}
+
+interface CompanionDataContextType {
+  companionData: CompanionData | null;
+  refreshCompanionData: () => void;
+}
+
+export const CompanionDataContext = createContext<CompanionDataContextType | null>(null);
+
+export const CompanionDataProvider: React.FC<CompanionDataProviderProps> = ({ childr
