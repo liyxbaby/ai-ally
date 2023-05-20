@@ -13,4 +13,10 @@ interface CompanionDataContextType {
 
 export const CompanionDataContext = createContext<CompanionDataContextType | null>(null);
 
-export const CompanionDataProvider: React.FC<CompanionDataProviderProps> = ({ childr
+export const CompanionDataProvider: React.FC<CompanionDataProviderProps> = ({ children }) => {
+  const [companionData, setCompanionData] = useState<CompanionData | null>(null);
+  const [refreshData, setRefreshData] = useState<boolean>(false);
+
+  useEffect(() => {
+    fetchCompanionData().then((data: CompanionData) => {
+      data.avatar_path = data.avatar_path + "?timestamp=" + new Date().ge
