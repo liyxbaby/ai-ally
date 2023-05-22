@@ -48,4 +48,17 @@ export const CompanionDataProvider: React.FC<CompanionDataProviderProps> = ({ ch
   return (
     <CompanionDataContext.Provider value={{companionData, refreshCompanionData}}>
       {children}
-    </Com
+    </CompanionDataContext.Provider>
+  );
+};
+
+export const useCompanionData = () => {
+  return useContext(CompanionDataContext);
+};
+
+export const updateCompanionData = async (companionData: CompanionData) => {
+  try {
+    const response = await fetch('/api/companion', {
+      method: 'PUT',
+      headers: {
+     
