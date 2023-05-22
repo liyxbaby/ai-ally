@@ -24,4 +24,15 @@ export const useMessages = () => {
   return context;
 };
 
-export const MessagesProvider: React.FC<MessagesProviderProps
+export const MessagesProvider: React.FC<MessagesProviderProps> = ({ children }) => {
+  const [messages, setMessages] = useState<MessageInterface[]>([]);
+  const [refreshData, setRefreshData] = useState<boolean>(false);
+  const [start, setStart] = useState<number>(0);
+
+  useEffect(() => {
+    fetchMessages().then((data) => {
+      setMessages(data);
+    });
+  }, [refreshData]);
+
+  const fetchMessages = async () =>
