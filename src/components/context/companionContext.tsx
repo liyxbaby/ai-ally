@@ -19,4 +19,18 @@ export const CompanionDataProvider: React.FC<CompanionDataProviderProps> = ({ ch
 
   useEffect(() => {
     fetchCompanionData().then((data: CompanionData) => {
-      data.avatar_path = data.avatar_path + "?timestamp=" + new Date().ge
+      data.avatar_path = data.avatar_path + "?timestamp=" + new Date().getTime();
+      setCompanionData(data);
+    });
+  }, [refreshData]);
+
+  const fetchCompanionData = async () => {
+    try {
+      const response = await fetch('/api/companion');
+      if (!response.ok) {
+        throw new Error('');
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      conso
