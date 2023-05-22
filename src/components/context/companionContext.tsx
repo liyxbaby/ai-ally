@@ -61,4 +61,15 @@ export const updateCompanionData = async (companionData: CompanionData) => {
     const response = await fetch('/api/companion', {
       method: 'PUT',
       headers: {
-     
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(companionData),
+    });
+    if (!response.ok) {
+      throw new Error('');
+    }
+    const response_text = await response.text();
+    toast.info(response_text);
+  } catch (error) {
+    console.error(error);
+    toast.error(`Error 
