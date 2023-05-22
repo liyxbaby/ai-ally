@@ -33,4 +33,19 @@ export const CompanionDataProvider: React.FC<CompanionDataProviderProps> = ({ ch
       const data = await response.json();
       return data;
     } catch (error) {
-      conso
+      console.error(error);
+      toast.error(`Error while fetching companion data: ${error}`);
+      return null;
+    }
+  };
+
+  const refreshCompanionData = () => {
+    setRefreshData(!refreshData);
+  };
+
+
+
+  return (
+    <CompanionDataContext.Provider value={{companionData, refreshCompanionData}}>
+      {children}
+    </Com
