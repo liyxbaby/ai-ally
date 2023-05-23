@@ -63,3 +63,13 @@ export const MessagesProvider: React.FC<MessagesProviderProps> = ({ children }) 
     refreshMessages();
   };
 
+  const resetStart = () => {
+    setStart(0);
+  }
+
+  return (
+    <MessagesContext.Provider value={{ messages, refreshMessages, pushMessage, loadMoreMessages, resetStart }}>
+      {children}
+    </MessagesContext.Provider>
+  );
+};
