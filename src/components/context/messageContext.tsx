@@ -35,4 +35,14 @@ export const MessagesProvider: React.FC<MessagesProviderProps> = ({ children }) 
     });
   }, [refreshData]);
 
-  const fetchMessages = async () =>
+  const fetchMessages = async () => {
+    try {
+      const response = await fetch(`/api/message?limit=50&start=${start}`);
+      if (!response.ok) {
+        throw new Error('');
+      }
+      const data: MessageInterface[] = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error);
+      toast.error(`Error while fetching messag
