@@ -45,4 +45,21 @@ export const MessagesProvider: React.FC<MessagesProviderProps> = ({ children }) 
       return data;
     } catch (error) {
       console.error(error);
-      toast.error(`Error while fetching messag
+      toast.error(`Error while fetching messages: ${error}`);
+      return [];
+    }
+  };
+
+  const refreshMessages = () => {
+    setRefreshData(!refreshData);
+  };
+
+  const pushMessage = (message: MessageInterface) => {
+    setMessages(prevMessages => [...prevMessages, message]);
+  };
+
+  const loadMoreMessages = () => {
+    setStart(start + 50);
+    refreshMessages();
+  };
+
