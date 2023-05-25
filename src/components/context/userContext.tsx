@@ -67,4 +67,9 @@ export const updateUserData = async (userData: UserData) => {
       throw new Error('');
     }
     const response_text = await response.text();
-    toast
+    toast.info(response_text);
+  } catch (error) {
+    console.error(error);
+    toast.error(`Error while sending user data to backend: ${error}`);
+  }
+};
