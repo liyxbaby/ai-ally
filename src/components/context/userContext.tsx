@@ -23,4 +23,17 @@ export const UserDataProvider: React.FC<UserDataProviderProps> = ({ children }) 
     });
   }, [refreshData]);
 
-  const fetchUserData = as
+  const fetchUserData = async () => {
+    try {
+      const response = await fetch('/api/user');
+      if (!response.ok) {
+        throw new Error('');
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error);
+      toast.error(`Error while fetching user data: ${error}`);
+      return null;
+    }
+ 
