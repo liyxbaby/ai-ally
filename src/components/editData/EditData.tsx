@@ -5,4 +5,14 @@ import {
   Card,
   CardContent,
   CardDescription,
-  Car
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "../ui/textarea"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Info } from "lucide-react"
+
+import companionAvatar from ".
