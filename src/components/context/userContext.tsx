@@ -36,4 +36,22 @@ export const UserDataProvider: React.FC<UserDataProviderProps> = ({ children }) 
       toast.error(`Error while fetching user data: ${error}`);
       return null;
     }
- 
+  };
+
+  const refreshUserData = () => {
+    setRefreshData(!refreshData);
+  };
+
+
+  return (
+    <UserDataContext.Provider value={{userData, refreshUserData}}>
+      {children}
+    </UserDataContext.Provider>
+  );
+};
+
+export const useUserData = () => {
+  return useContext(UserDataContext);
+};
+
+export const updateUserData = async
