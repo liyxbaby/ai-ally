@@ -54,4 +54,17 @@ export const useUserData = () => {
   return useContext(UserDataContext);
 };
 
-export const updateUserData = async
+export const updateUserData = async (userData: UserData) => {
+  try {
+    const response = await fetch('/api/user', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData),
+    });
+    if (!response.ok) {
+      throw new Error('');
+    }
+    const response_text = await response.text();
+    toast
