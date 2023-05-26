@@ -36,4 +36,11 @@ import { updateUserData, useUserData } from "../context/userContext"
 import { updateConfigData, useConfigData } from "../context/configContext"
 import { ConfigInterface, Device, PromptTemplate } from "../interfaces/Config"
 import { useEffect, useState } from "react"
-import { CompanionData } from "../interfaces/CompanionData
+import { CompanionData } from "../interfaces/CompanionData"
+import { UserData } from "../interfaces/UserData"
+import { toast } from "sonner"
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog"
+import { useMessages } from "../context/messageContext"
+
+export function EditData() {
+  const companio
