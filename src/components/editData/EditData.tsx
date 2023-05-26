@@ -32,3 +32,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
+import { updateUserData, useUserData } from "../context/userContext"
+import { updateConfigData, useConfigData } from "../context/configContext"
+import { ConfigInterface, Device, PromptTemplate } from "../interfaces/Config"
+import { useEffect, useState } from "react"
+import { CompanionData } from "../interfaces/CompanionData
