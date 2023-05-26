@@ -54,4 +54,11 @@ export function EditData() {
   const [userFormData, setUserFormData] = useState<UserData>(userData);
 
   const configContext = useConfigData();
-  const confi
+  const configData: ConfigInterface = configContext?.config ?? {} as ConfigInterface;
+  const [configFormData, setConfigFormData] = useState<ConfigInterface>(configData);
+
+  const { refreshMessages, resetStart } = useMessages();
+
+  const handleCompanionSave = async () => {
+    if (companionFormData) {
+      awai
