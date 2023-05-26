@@ -43,4 +43,8 @@ import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, Di
 import { useMessages } from "../context/messageContext"
 
 export function EditData() {
-  const companio
+  const companionDataContext = useCompanionData();
+  const companionData: CompanionData = companionDataContext?.companionData ?? {} as CompanionData;
+  const [companionFormData, setCompanionFormData] = useState<CompanionData>(companionData);
+  const [avatarFile, setAvatarFile] = useState<File | null>(null);
+  const 
