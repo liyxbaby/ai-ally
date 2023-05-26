@@ -77,4 +77,14 @@ export function EditData() {
     }
   };
 
-  const handleAvatarChang
+  const handleAvatarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (files && files.length > 0) {
+      const selectedFile = files[0];
+      setAvatarFile(selectedFile);
+      setAvatarPreview(URL.createObjectURL(selectedFile));
+    }
+  };
+
+  useEffect(() => {
+    if (compa
