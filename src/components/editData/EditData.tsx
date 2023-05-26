@@ -61,4 +61,20 @@ export function EditData() {
 
   const handleCompanionSave = async () => {
     if (companionFormData) {
-      awai
+      await updateCompanionData(companionFormData);
+    }
+  };
+
+  const handleUserSave = async () => {
+    if (userFormData) {
+      await updateUserData(userFormData);
+    }
+  };
+
+  const handleConfigSave = async () => {
+    if (configFormData) {
+      await updateConfigData(configFormData);
+    }
+  };
+
+  const handleAvatarChang
