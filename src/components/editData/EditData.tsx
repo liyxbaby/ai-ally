@@ -47,4 +47,11 @@ export function EditData() {
   const companionData: CompanionData = companionDataContext?.companionData ?? {} as CompanionData;
   const [companionFormData, setCompanionFormData] = useState<CompanionData>(companionData);
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
-  const 
+  const [avatarPreview, setAvatarPreview] = useState(companionData.avatar_path || companionAvatar);
+
+  const userDataContext = useUserData();
+  const userData: UserData = userDataContext?.userData ?? {} as UserData;
+  const [userFormData, setUserFormData] = useState<UserData>(userData);
+
+  const configContext = useConfigData();
+  const confi
