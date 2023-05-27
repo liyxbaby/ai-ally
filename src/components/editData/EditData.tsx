@@ -135,4 +135,13 @@ export function EditData() {
     if (characterCardFile) {
       try {
         const formData = new FormData();
-        formData.appen
+        formData.append("character_card", characterCardFile);
+        const response = await fetch("/api/companion/card", {
+          method: "POST",
+          headers: {
+            'Content-Type': 'image/png',
+        },
+          body: characterCardFile,
+        });
+        if (response.ok) {
+          toast.success("
