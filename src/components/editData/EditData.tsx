@@ -114,4 +114,14 @@ export function EditData() {
       } catch (error) {
         console.error("Error uploading avatar:", error);
         toast.error(`Error uploading avatar: ${error}`);
-  
+      }
+    } else {
+      toast.warning("Please select an avatar file to upload");
+      console.warn("Please select an avatar file to upload");
+    }
+  };
+
+  const [characterCardFile, setCharacterCardFile] = useState<File | null>(null);
+
+  const handleCharacterCardChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    con
