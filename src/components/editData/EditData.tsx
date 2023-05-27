@@ -87,4 +87,13 @@ export function EditData() {
   };
 
   useEffect(() => {
-    if (compa
+    if (companionDataContext) {
+      setCompanionFormData(companionDataContext.companionData as CompanionData);
+    }
+  }, [companionDataContext?.companionData]);
+
+  const handleAvatarUpload = async () => {
+    if (avatarFile) {
+      try {
+        const formData = new FormData();
+        formData.append("avatar", avatarFi
