@@ -96,4 +96,14 @@ export function EditData() {
     if (avatarFile) {
       try {
         const formData = new FormData();
-        formData.append("avatar", avatarFi
+        formData.append("avatar", avatarFile);
+        const response = await fetch("/api/companion/avatar", {
+          method: "POST",
+          headers: {
+            'Content-Type': 'image/png',
+        },
+          body: avatarFile,
+        });
+        if (response.ok) {
+          toast.success("Companion avatar changed successfully!");
+          compan
