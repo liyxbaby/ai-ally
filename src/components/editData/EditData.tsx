@@ -124,4 +124,15 @@ export function EditData() {
   const [characterCardFile, setCharacterCardFile] = useState<File | null>(null);
 
   const handleCharacterCardChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    con
+    const files = event.target.files;
+    if (files && files.length > 0) {
+      const selectedFile = files[0];
+      setCharacterCardFile(selectedFile);
+    }
+  };
+
+  const handleCharacterCardUpload = async () => {
+    if (characterCardFile) {
+      try {
+        const formData = new FormData();
+        formData.appen
