@@ -144,4 +144,11 @@ export function EditData() {
           body: characterCardFile,
         });
         if (response.ok) {
-          toast.success("
+          toast.success("Companion card uploaded successfully!");
+          await companionDataContext?.refreshCompanionData();
+        } else {
+          toast.error("Failed to upload character card");
+          console.error("Failed to upload character card");
+        }
+      } catch (error) {
+        console.error("Error uploading character card:",
