@@ -106,4 +106,12 @@ export function EditData() {
         });
         if (response.ok) {
           toast.success("Companion avatar changed successfully!");
-          compan
+          companionDataContext?.refreshCompanionData();
+        } else {
+          toast.error("Failed to change companion avatar");
+          console.error("Failed to change companion avatar");
+        }
+      } catch (error) {
+        console.error("Error uploading avatar:", error);
+        toast.error(`Error uploading avatar: ${error}`);
+  
