@@ -151,4 +151,13 @@ export function EditData() {
           console.error("Failed to upload character card");
         }
       } catch (error) {
-        console.error("Error uploading character card:",
+        console.error("Error uploading character card:", error);
+        toast.error(`Error uploading character card: ${error}`);
+      }
+    } else {
+      toast.warning("Please select an character card (.png) file to upload");
+      console.warn("Please select an character card (.png) file to upload");
+    }
+  };
+
+  const [characterJsonFile, setCharacterJsonFile] = useS
