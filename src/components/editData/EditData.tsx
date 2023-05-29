@@ -170,4 +170,15 @@ export function EditData() {
     }
   };
 
-  const handleCharacterJsonUpload = async 
+  const handleCharacterJsonUpload = async () => {
+    if (characterJsonFile) {
+      try {
+        const response = await fetch("/api/companion/characterJson", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: characterJsonFile,
+        });
+        if (response.ok) {
+          toast.success("Character JSON
