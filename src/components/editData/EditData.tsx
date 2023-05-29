@@ -181,4 +181,12 @@ export function EditData() {
           body: characterJsonFile,
         });
         if (response.ok) {
-          toast.success("Character JSON
+          toast.success("Character JSON uploaded successfully!");
+          await companionDataContext?.refreshCompanionData();
+        } else {
+          toast.error("Failed to upload character JSON");
+        }
+      } catch (error) {
+        console.error("Error uploading character JSON:", error);
+        toast.error(`Error uploading character JSON: ${error}`);
+      }
