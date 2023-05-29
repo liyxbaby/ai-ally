@@ -160,4 +160,14 @@ export function EditData() {
     }
   };
 
-  const [characterJsonFile, setCharacterJsonFile] = useS
+  const [characterJsonFile, setCharacterJsonFile] = useState<File | null>(null);
+
+  const handleCharacterJsonChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (files && files.length > 0) {
+      const selectedFile = files[0];
+      setCharacterJsonFile(selectedFile);
+    }
+  };
+
+  const handleCharacterJsonUpload = async 
