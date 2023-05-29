@@ -190,3 +190,16 @@ export function EditData() {
         console.error("Error uploading character JSON:", error);
         toast.error(`Error uploading character JSON: ${error}`);
       }
+    } else {
+      toast.warning("Please select a character JSON file to upload");
+    }
+  };
+
+  const handleEraseDialogueTuning = async () => {
+    try {
+      const response = await fetch("/api/memory/dialogueTuning", {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        toast.success("Character dial
