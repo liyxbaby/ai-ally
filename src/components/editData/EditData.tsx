@@ -260,4 +260,13 @@ export function EditData() {
         const blob = new Blob([jsonString], { type: "application/json" });
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
-     
+        a.href = url;
+        a.download = "companion.json";
+        a.click();
+        URL.revokeObjectURL(url);
+      } else {
+        toast.error("Failed to export companion as JSON");
+        console.error("Failed to export companion as JSON");
+      }
+    } catch (error) {
+      toast.error(`Error exporting companion as JSON: 
