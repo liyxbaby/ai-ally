@@ -242,4 +242,15 @@ export function EditData() {
         resetStart();
         refreshMessages();
       } else {
-        toast.error("Failed to 
+        toast.error("Failed to clear chat log");
+        console.error("Failed to clear chat log");
+      }
+    } catch (error) {
+      toast.error(`Error while clearing chat log: ${error}`);
+      console.error("Error while clearing chat log:", error);
+    }
+  };
+
+  const handleExportCharacterJson = async () => {
+    try {
+      const response = awai
