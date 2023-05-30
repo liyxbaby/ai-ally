@@ -209,4 +209,15 @@ export function EditData() {
       }
     } catch (error) {
       toast.error(`Error while erasing dialogue tuning: ${error}`);
-      console.error("Error wh
+      console.error("Error while erasing dialogue tuning:", error);
+    }
+  };
+
+  const handleEraseLongTerm = async () => {
+    try {
+      const response = await fetch("/api/memory/longTerm", {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        toast.success("Long term memory cleared successfully!");
