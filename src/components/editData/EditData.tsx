@@ -229,3 +229,17 @@ export function EditData() {
       toast.error(`Error while erasing long term memory: ${error}`);
       console.error("Error while erasing long term memory:", error);
     }
+  };
+
+  const handleClearMessages = async () => {
+    try {
+      const response = await fetch("/api/message", {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        toast.success("Chat log cleared successfully!");
+        resetStart();
+        refreshMessages();
+      } else {
+        toast.error("Failed to 
