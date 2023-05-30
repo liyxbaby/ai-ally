@@ -221,3 +221,11 @@ export function EditData() {
 
       if (response.ok) {
         toast.success("Long term memory cleared successfully!");
+      } else {
+        toast.error("Failed to erase long term memory");
+        console.error("Failed to erase long term memory");
+      }
+    } catch (error) {
+      toast.error(`Error while erasing long term memory: ${error}`);
+      console.error("Error while erasing long term memory:", error);
+    }
