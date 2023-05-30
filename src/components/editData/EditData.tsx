@@ -253,4 +253,11 @@ export function EditData() {
 
   const handleExportCharacterJson = async () => {
     try {
-      const response = awai
+      const response = await fetch("/api/companion/characterJson");
+      if (response.ok) {
+        const json = await response.json();
+        const jsonString = JSON.stringify(json);
+        const blob = new Blob([jsonString], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+     
