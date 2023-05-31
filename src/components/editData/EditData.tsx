@@ -293,4 +293,11 @@ export function EditData() {
           <div className="flex justify-center">
             <div className="space-y-1 self-center">
               <label htmlFor="avatar" className="cursor-pointer">
-                <TooltipPr
+                <TooltipProvider delayDuration={350}>
+                <Tooltip>
+                    <TooltipTrigger asChild>
+                    <Avatar className="w-24 h-24">
+                      <AvatarImage id="change-avatar" src={avatarPreview} alt="Companion Avatar" />
+                      <AvatarFallback>AI</AvatarFallback>
+                    </Avatar>
+           
