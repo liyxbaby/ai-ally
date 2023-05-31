@@ -269,4 +269,13 @@ export function EditData() {
         console.error("Failed to export companion as JSON");
       }
     } catch (error) {
-      toast.error(`Error exporting companion as JSON: 
+      toast.error(`Error exporting companion as JSON: ${error}`);
+      console.error("Error exporting companion as JSON:", error);
+    }
+  };
+
+  return (
+    <Tabs defaultValue="companion" className="h-[65vh] overflow-y-auto">
+      <TabsList className="grid w-full grid-cols-3">
+        <TabsTrigger value="companion">Companion</TabsTrigger>
+        <TabsTrigger value="user">User</TabsTrigger
