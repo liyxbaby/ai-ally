@@ -278,4 +278,12 @@ export function EditData() {
     <Tabs defaultValue="companion" className="h-[65vh] overflow-y-auto">
       <TabsList className="grid w-full grid-cols-3">
         <TabsTrigger value="companion">Companion</TabsTrigger>
-        <TabsTrigger value="user">User</TabsTrigger
+        <TabsTrigger value="user">User</TabsTrigger>
+        <TabsTrigger value="config">Config</TabsTrigger>
+      </TabsList>
+      <TabsContent value="companion">
+        <Card className="bg-background border-none shadow-none">
+          <CardHeader>
+            <CardTitle>Companion</CardTitle>
+            <CardDescription>
+                Change your companion data
