@@ -287,3 +287,10 @@ export function EditData() {
             <CardTitle>Companion</CardTitle>
             <CardDescription>
                 Change your companion data
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+          <div className="flex justify-center">
+            <div className="space-y-1 self-center">
+              <label htmlFor="avatar" className="cursor-pointer">
+                <TooltipPr
