@@ -300,4 +300,13 @@ export function EditData() {
                       <AvatarImage id="change-avatar" src={avatarPreview} alt="Companion Avatar" />
                       <AvatarFallback>AI</AvatarFallback>
                     </Avatar>
-           
+                    </TooltipTrigger>
+                    <TooltipContent side="top">
+                      <p>Select an image from disk</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+                <input
+                  id="avatar"
+                  type="file"
+    
