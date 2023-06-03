@@ -351,4 +351,7 @@ export function EditData() {
                           <p>{"{{user}}: question/roleplay action etc"}</p>
                           <p>{"{{char}}: answer"}</p>
                         </TooltipContent>
- 
+                    </Tooltip>
+                  </TooltipProvider>
+                </div>
+              <Textarea className="min-h-[100px]" id="companionDialogue" value={companionFormData.example_dialogue} onChange={(e) => setCompanionFormData({ ...companionFormData, example_dialogue: e.target.
