@@ -329,4 +329,12 @@ export function EditData() {
                 Your companion's persona
                 <TooltipProvider delayDuration={0}>
                   <Tooltip>
-                    <TooltipTrigger className
+                    <TooltipTrigger className="cursor-default"> <Info /></TooltipTrigger>
+                    <TooltipContent>
+                      <p>personality, look, backstory etc</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
+            </Label>
+              <Tex
