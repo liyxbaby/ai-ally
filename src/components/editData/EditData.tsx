@@ -317,4 +317,10 @@ export function EditData() {
             </div>
           </div>
           <div className="flex justify-center">
-            <Button variant={"outline"} onClick={handleAvatarUpload}>Uploa
+            <Button variant={"outline"} onClick={handleAvatarUpload}>Upload avatar</Button>
+          </div>
+            <div className="space-y-1">
+              <Label htmlFor="companionName">Your companion name</Label>
+              <Input id="companionName" value={companionFormData.name} onChange={(e) => setCompanionFormData({ ...companionFormData, name: e.target.value })} />
+            </div>
+       
