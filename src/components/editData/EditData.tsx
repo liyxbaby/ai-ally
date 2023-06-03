@@ -346,4 +346,9 @@ export function EditData() {
                       <Tooltip>
                         <TooltipTrigger className="cursor-default"> <Info /></TooltipTrigger>
                         <TooltipContent>
-                          <p>Sample dialogue with your companion so th
+                          <p>Sample dialogue with your companion so that the ai knows how or in what style to answer certain questions.</p>
+                          <p>Type it in this format:</p>
+                          <p>{"{{user}}: question/roleplay action etc"}</p>
+                          <p>{"{{char}}: answer"}</p>
+                        </TooltipContent>
+ 
