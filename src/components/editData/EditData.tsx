@@ -341,4 +341,9 @@ export function EditData() {
             </div>
             <div className="space-y-1">
             <div className="flex items-center gap-2">
-  
+                Example dialogue
+                <TooltipProvider delayDuration={0}>
+                      <Tooltip>
+                        <TooltipTrigger className="cursor-default"> <Info /></TooltipTrigger>
+                        <TooltipContent>
+                          <p>Sample dialogue with your companion so th
