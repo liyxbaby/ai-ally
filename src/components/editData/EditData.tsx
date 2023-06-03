@@ -358,4 +358,7 @@ export function EditData() {
             </div>
             <div className="space-y-1">
               <Label htmlFor="companionFirstMessage">First message with which the AI will start a conversation</Label>
-              <Textarea className="min-h-[100px]" id="companionFirstMessage" value={companionFormData.f
+              <Textarea className="min-h-[100px]" id="companionFirstMessage" value={companionFormData.first_message} onChange={(e) => setCompanionFormData({ ...companionFormData, first_message: e.target.value })} />
+            </div>
+            <div className="flex flex-row items-center justify-center">
+              <button className="hover:text-muted-foreground" onClick={handleExportCharacterJson}>Export companion data as
