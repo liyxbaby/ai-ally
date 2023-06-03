@@ -354,4 +354,8 @@ export function EditData() {
                     </Tooltip>
                   </TooltipProvider>
                 </div>
-              <Textarea className="min-h-[100px]" id="companionDialogue" value={companionFormData.example_dialogue} onChange={(e) => setCompanionFormData({ ...companionFormData, example_dialogue: e.target.
+              <Textarea className="min-h-[100px]" id="companionDialogue" value={companionFormData.example_dialogue} onChange={(e) => setCompanionFormData({ ...companionFormData, example_dialogue: e.target.value })} />
+            </div>
+            <div className="space-y-1">
+              <Label htmlFor="companionFirstMessage">First message with which the AI will start a conversation</Label>
+              <Textarea className="min-h-[100px]" id="companionFirstMessage" value={companionFormData.f
