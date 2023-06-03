@@ -323,4 +323,10 @@ export function EditData() {
               <Label htmlFor="companionName">Your companion name</Label>
               <Input id="companionName" value={companionFormData.name} onChange={(e) => setCompanionFormData({ ...companionFormData, name: e.target.value })} />
             </div>
-       
+            <div className="space-y-1">
+              <Label htmlFor="companionPersona" className="flex flex-row gap-2">
+              <div className="flex items-center gap-2">
+                Your companion's persona
+                <TooltipProvider delayDuration={0}>
+                  <Tooltip>
+                    <TooltipTrigger className
