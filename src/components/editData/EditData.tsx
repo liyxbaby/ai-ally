@@ -337,4 +337,8 @@ export function EditData() {
                 </TooltipProvider>
               </div>
             </Label>
-              <Tex
+              <Textarea className="min-h-[100px]" id="companionPersona" value={companionFormData.persona} onChange={(e) => setCompanionFormData({ ...companionFormData, persona: e.target.value })} />
+            </div>
+            <div className="space-y-1">
+            <div className="flex items-center gap-2">
+  
