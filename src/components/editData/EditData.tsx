@@ -309,4 +309,12 @@ export function EditData() {
                 <input
                   id="avatar"
                   type="file"
-    
+                  className="hidden"
+                  onChange={handleAvatarChange}
+                  accept="image/*"
+                />
+              </label>
+            </div>
+          </div>
+          <div className="flex justify-center">
+            <Button variant={"outline"} onClick={handleAvatarUpload}>Uploa
