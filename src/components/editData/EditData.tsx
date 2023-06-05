@@ -369,4 +369,10 @@ export function EditData() {
                 long term memory entries
                 <TooltipProvider delayDuration={0}>
                     <Tooltip>
-                  
+                      <TooltipTrigger className="cursor-default"> <Info /></TooltipTrigger>
+                      <TooltipContent>
+                        <p>how much the ai has to recall things from long-term memory at a time</p>
+                      </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </
