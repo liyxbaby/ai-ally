@@ -375,4 +375,9 @@ export function EditData() {
                       </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
-              </
+              </div>
+              </Label>
+              <Input id="companionLongTermMemory" type="number" value={companionFormData.long_term_mem} onChange={(e) => setCompanionFormData({ ...companionFormData, long_term_mem: parseInt(e.target.value) })} />
+            </div>
+            <div className="space-y-1">
+              <Label htmlFor="compani
