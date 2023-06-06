@@ -386,4 +386,11 @@ export function EditData() {
                 <TooltipProvider delayDuration={0}>
                     <Tooltip>
                       <TooltipTrigger className="cursor-default"> <Info /></TooltipTrigger>
-   
+                      <TooltipContent>
+                        <p>how many recent messages to remind ai at once</p>
+                      </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
+              </Label>
+              <Input id="companionShortTermMemory" type="number" value={companionFormData.sh
