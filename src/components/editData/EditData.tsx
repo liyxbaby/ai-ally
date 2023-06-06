@@ -380,4 +380,10 @@ export function EditData() {
               <Input id="companionLongTermMemory" type="number" value={companionFormData.long_term_mem} onChange={(e) => setCompanionFormData({ ...companionFormData, long_term_mem: parseInt(e.target.value) })} />
             </div>
             <div className="space-y-1">
-              <Label htmlFor="compani
+              <Label htmlFor="companionShortTermMemory" className="flex flex-row gap-2">
+              <div className="flex items-center gap-2">
+                short term memory entries
+                <TooltipProvider delayDuration={0}>
+                    <Tooltip>
+                      <TooltipTrigger className="cursor-default"> <Info /></TooltipTrigger>
+   
