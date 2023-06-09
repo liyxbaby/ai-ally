@@ -393,4 +393,9 @@ export function EditData() {
                 </TooltipProvider>
               </div>
               </Label>
-              <Input id="companionShortTermMemory" type="number" value={companionFormData.sh
+              <Input id="companionShortTermMemory" type="number" value={companionFormData.short_term_mem} onChange={(e) => setCompanionFormData({ ...companionFormData, short_term_mem: parseInt(e.target.value) })} />
+            </div>
+            <div className="flex items-center space-x-2">
+            <input
+              type="checkbox"
+              className="peer h-4 w-4 shrink-0 rounded-sm border bor
