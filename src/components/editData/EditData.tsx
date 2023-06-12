@@ -412,4 +412,11 @@ export function EditData() {
                       <Tooltip>
                         <TooltipTrigger className="cursor-default"> <Info /></TooltipTrigger>
                         <TooltipContent>
-                          <p>if
+                          <p>if checked, messages may contain gestures and other non-verbal actions written between asterisks (for example *waves hello* or *moves closer*)</p>
+                        </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </div>
+            </label>
+          </div>
+          <div className="flex item
