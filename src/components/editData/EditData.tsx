@@ -406,4 +406,10 @@ export function EditData() {
               htmlFor="roleplay"
               className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex flex-row gap-2"
             >
-             
+              <div className="flex items-center gap-2">
+                Roleplay
+                <TooltipProvider delayDuration={0}>
+                      <Tooltip>
+                        <TooltipTrigger className="cursor-default"> <Info /></TooltipTrigger>
+                        <TooltipContent>
+                          <p>if
