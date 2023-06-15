@@ -437,4 +437,12 @@ export function EditData() {
                       <Tooltip>
                         <TooltipTrigger className="cursor-default"> <Info /></TooltipTrigger>
                         <TooltipContent>
-                          <p>if checked, the generated messages will resemble those fo
+                          <p>if checked, the generated messages will resemble those for which you clicked the "good response" button below them</p>
+                        </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </div>
+            </label>
+          </div>
+          <div className="flex flex-row gap-2">
+            <Input
