@@ -454,4 +454,9 @@ export function EditData() {
           </div>
           <div className="flex flex-col justify-center items-center gap-4 flex-wrap my-2">
           <Dialog>
-              <DialogTrigger><Button variant={"
+              <DialogTrigger><Button variant={"outline"} className="grow">Erase dialogue tuning</Button></DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Are you absolutely sure?</DialogTitle>
+                  <DialogDescription>
+                  All entries added to dialogue tuning will be erased (th
