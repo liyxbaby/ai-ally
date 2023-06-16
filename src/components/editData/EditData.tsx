@@ -445,4 +445,8 @@ export function EditData() {
             </label>
           </div>
           <div className="flex flex-row gap-2">
-            <Input
+            <Input className="text-primary" type="file" accept="image/png" onChange={handleCharacterCardChange} />
+            <Button variant={"outline"} onClick={handleCharacterCardUpload}>Upload Character Card</Button>
+          </div>
+          <div className="flex flex-row gap-2">
+            <Input className="text-primary" type="file" acce
