@@ -449,4 +449,9 @@ export function EditData() {
             <Button variant={"outline"} onClick={handleCharacterCardUpload}>Upload Character Card</Button>
           </div>
           <div className="flex flex-row gap-2">
-            <Input className="text-primary" type="file" acce
+            <Input className="text-primary" type="file" accept=".json" onChange={handleCharacterJsonChange} />
+            <Button variant={"outline"} onClick={handleCharacterJsonUpload}>Upload Character JSON</Button>
+          </div>
+          <div className="flex flex-col justify-center items-center gap-4 flex-wrap my-2">
+          <Dialog>
+              <DialogTrigger><Button variant={"
