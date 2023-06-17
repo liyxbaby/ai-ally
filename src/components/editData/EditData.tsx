@@ -466,4 +466,11 @@ export function EditData() {
                   <DialogClose>
                     <Button onClick={handleEraseDialogueTuning}>Erase dialogue tuning</Button>
                   </DialogClose>
-           
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+            <Dialog>
+              <DialogTrigger><Button variant={"outline"} className="grow">Erase long term memory</Button></DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Are you absolutely s
