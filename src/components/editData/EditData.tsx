@@ -459,4 +459,11 @@ export function EditData() {
                 <DialogHeader>
                   <DialogTitle>Are you absolutely sure?</DialogTitle>
                   <DialogDescription>
-                  All entries added to dialogue tuning will be erased (th
+                  All entries added to dialogue tuning will be erased (this action cannot be undone).
+                  </DialogDescription>
+                </DialogHeader>
+                <DialogFooter>
+                  <DialogClose>
+                    <Button onClick={handleEraseDialogueTuning}>Erase dialogue tuning</Button>
+                  </DialogClose>
+           
