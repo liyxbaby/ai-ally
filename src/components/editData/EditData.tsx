@@ -487,4 +487,9 @@ export function EditData() {
             </Dialog>
             <Dialog>
               <DialogTrigger><Button variant={"outline"} className="grow">Clear chat log</Button></DialogTrigger>
-              <Di
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Are you absolutely sure?</DialogTitle>
+                  <DialogDescription>
+                  The entire chat log and short-term memory will be erased and the character's first message will be loaded (this action cannot be undone).
+         
