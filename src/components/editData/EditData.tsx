@@ -480,4 +480,11 @@ export function EditData() {
                 </DialogHeader>
                 <DialogFooter>
                   <DialogClose>
-                    <Butt
+                    <Button onClick={handleEraseLongTerm}>Erase long term memory</Button>
+                  </DialogClose>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+            <Dialog>
+              <DialogTrigger><Button variant={"outline"} className="grow">Clear chat log</Button></DialogTrigger>
+              <Di
