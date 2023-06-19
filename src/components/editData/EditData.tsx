@@ -492,4 +492,12 @@ export function EditData() {
                   <DialogTitle>Are you absolutely sure?</DialogTitle>
                   <DialogDescription>
                   The entire chat log and short-term memory will be erased and the character's first message will be loaded (this action cannot be undone).
-         
+                  </DialogDescription>
+                </DialogHeader>
+                <DialogFooter>
+                  <DialogClose>
+                    <Button onClick={handleClearMessages}>Clear chat log</Button>
+                  </DialogClose>
+                </DialogFooter>
+              </DialogContent>
+            
