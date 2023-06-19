@@ -500,4 +500,15 @@ export function EditData() {
                   </DialogClose>
                 </DialogFooter>
               </DialogContent>
-            
+            </Dialog>
+          </div>
+          </CardContent>
+          <CardFooter className="flex justify-center mt-3">
+            <Button onClick={() => {
+                handleCompanionSave();
+                companionDataContext?.refreshCompanionData();
+              }}>Save changes</Button>
+          </CardFooter>
+        </Card>
+      </TabsContent>
+      <T
