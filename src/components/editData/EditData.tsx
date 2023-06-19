@@ -511,4 +511,13 @@ export function EditData() {
           </CardFooter>
         </Card>
       </TabsContent>
-      <T
+      <TabsContent value="user">
+        <Card className="bg-background border-none shadow-none">
+          <CardHeader>
+            <CardTitle>User</CardTitle>
+            <CardDescription>
+                Change your data
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div
