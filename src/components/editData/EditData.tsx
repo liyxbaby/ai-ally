@@ -473,4 +473,11 @@ export function EditData() {
               <DialogTrigger><Button variant={"outline"} className="grow">Erase long term memory</Button></DialogTrigger>
               <DialogContent>
                 <DialogHeader>
-                  <DialogTitle>Are you absolutely s
+                  <DialogTitle>Are you absolutely sure?</DialogTitle>
+                  <DialogDescription>
+                  All entries added to long term memory will be erased (this action cannot be undone).
+                  </DialogDescription>
+                </DialogHeader>
+                <DialogFooter>
+                  <DialogClose>
+                    <Butt
