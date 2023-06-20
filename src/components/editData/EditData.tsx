@@ -538,4 +538,11 @@ export function EditData() {
                   </TooltipProvider>
                 </div>
               </Label>
-              <Textarea className="min-h-[100px]" id="userPersona" value={userFormData.persona} onC
+              <Textarea className="min-h-[100px]" id="userPersona" value={userFormData.persona} onChange={(e) => setUserFormData({ ...userFormData, persona: e.target.value })} />
+            </div>
+          </CardContent>
+          <CardFooter className="flex justify-center">
+            <Button onClick={() => {
+                handleUserSave();
+                userDataContext?.refreshUserData();
+              }}>Save c
