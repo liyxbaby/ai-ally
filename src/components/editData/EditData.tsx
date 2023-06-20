@@ -520,4 +520,9 @@ export function EditData() {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
-            <div
+            <div className="space-y-1">
+              <Label htmlFor="username">Your name</Label>
+              <Input id="username" value={userFormData.name} onChange={(e) => setUserFormData({ ...userFormData, name: e.target.value })} />
+            </div>
+            <div className="space-y-1">
+              <Label htmlFor="userPersona" className="flex flex-row gap-
