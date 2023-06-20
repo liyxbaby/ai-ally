@@ -525,4 +525,10 @@ export function EditData() {
               <Input id="username" value={userFormData.name} onChange={(e) => setUserFormData({ ...userFormData, name: e.target.value })} />
             </div>
             <div className="space-y-1">
-              <Label htmlFor="userPersona" className="flex flex-row gap-
+              <Label htmlFor="userPersona" className="flex flex-row gap-2">
+                <div className="flex items-center gap-2">
+                  Your persona
+                  <TooltipProvider delayDuration={0}>
+                      <Tooltip>
+                        <TooltipTrigger className="cursor-default"> <Info /></TooltipTrigger>
+      
