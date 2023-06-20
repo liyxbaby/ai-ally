@@ -531,4 +531,11 @@ export function EditData() {
                   <TooltipProvider delayDuration={0}>
                       <Tooltip>
                         <TooltipTrigger className="cursor-default"> <Info /></TooltipTrigger>
-      
+                        <TooltipContent>
+                          <p>personality, look, backstory etc</p>
+                        </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </div>
+              </Label>
+              <Textarea className="min-h-[100px]" id="userPersona" value={userFormData.persona} onC
