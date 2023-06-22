@@ -559,4 +559,11 @@ export function EditData() {
               <Label htmlFor="username">Device</Label>
               <Select onValueChange={(e) => setConfigFormData({ ...configFormData, device: e as Device })} defaultValue={configFormData?.device}>
               <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Select a
+                <SelectValue placeholder="Select a device to run the LLM model" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="CPU">CPU</SelectItem>
+                <SelectItem value="GPU">GPU</SelectItem>
+                <SelectItem value="Metal">Metal</SelectItem>
+              </SelectContent>
+           
