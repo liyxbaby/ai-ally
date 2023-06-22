@@ -545,4 +545,14 @@ export function EditData() {
             <Button onClick={() => {
                 handleUserSave();
                 userDataContext?.refreshUserData();
-              }}>Save c
+              }}>Save changes</Button>
+          </CardFooter>
+        </Card>
+      </TabsContent>
+      <TabsContent value="config">
+        <Card className="bg-background border-none shadow-none">
+          <CardHeader>
+            <CardTitle>Config</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+  
