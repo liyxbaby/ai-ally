@@ -594,4 +594,10 @@ export function EditData() {
               <Select onValueChange={(e) => setConfigFormData({ ...configFormData, prompt_template: e  as PromptTemplate })} defaultValue={configFormData?.prompt_template}>
                 <SelectTrigger className="w-[180px]">
                   <SelectValue placeholder="default" />
-                </SelectTrig
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Default">Default</SelectItem>
+                  <SelectItem value="Llama2">Llama2</SelectItem>
+                  <SelectItem value="Mistral">Mistral</SelectItem>
+                </SelectContent>
+              </Selec
