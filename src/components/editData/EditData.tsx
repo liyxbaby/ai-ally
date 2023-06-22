@@ -584,4 +584,10 @@ export function EditData() {
                           <p>path on the server to the llm model file with the .gguf extension</p>
                         </TooltipContent>
                     </Tooltip>
-               
+                  </TooltipProvider>
+                </div>
+                </Label>
+              <Input id="llmModelPath" value={configFormData.llm_model_path} onChange={(e) => setConfigFormData({ ...configData, llm_model_path: e.target.value })} />
+            </div>
+            <div className="space-y-1">
+              <Label htmlFor="promptTemplate">Prompt 
