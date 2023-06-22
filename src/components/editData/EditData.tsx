@@ -555,4 +555,8 @@ export function EditData() {
             <CardTitle>Config</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
-  
+            <div className="space-y-1">
+              <Label htmlFor="username">Device</Label>
+              <Select onValueChange={(e) => setConfigFormData({ ...configFormData, device: e as Device })} defaultValue={configFormData?.device}>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Select a
