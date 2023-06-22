@@ -579,4 +579,9 @@ export function EditData() {
                 Path to your Large Language Model (LLM)
                 <TooltipProvider delayDuration={0}>
                       <Tooltip>
-   
+                        <TooltipTrigger className="cursor-default"> <Info /></TooltipTrigger>
+                        <TooltipContent>
+                          <p>path on the server to the llm model file with the .gguf extension</p>
+                        </TooltipContent>
+                    </Tooltip>
+               
