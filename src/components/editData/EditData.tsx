@@ -590,4 +590,8 @@ export function EditData() {
               <Input id="llmModelPath" value={configFormData.llm_model_path} onChange={(e) => setConfigFormData({ ...configData, llm_model_path: e.target.value })} />
             </div>
             <div className="space-y-1">
-              <Label htmlFor="promptTemplate">Prompt 
+              <Label htmlFor="promptTemplate">Prompt template</Label>
+              <Select onValueChange={(e) => setConfigFormData({ ...configFormData, prompt_template: e  as PromptTemplate })} defaultValue={configFormData?.prompt_template}>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="default" />
+                </SelectTrig
