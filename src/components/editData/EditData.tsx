@@ -609,4 +609,8 @@ export function EditData() {
                 configContext?.refreshConfigData();
               }}>Save changes</Button>
           </CardFooter>
-        <
+        </Card>
+      </TabsContent>
+    </Tabs>
+  )
+}
