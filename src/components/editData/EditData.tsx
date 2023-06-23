@@ -600,4 +600,13 @@ export function EditData() {
                   <SelectItem value="Llama2">Llama2</SelectItem>
                   <SelectItem value="Mistral">Mistral</SelectItem>
                 </SelectContent>
-              </Selec
+              </Select>
+            </div>
+          </CardContent>
+          <CardFooter className="flex justify-center">
+            <Button onClick={() => {
+                handleConfigSave();
+                configContext?.refreshConfigData();
+              }}>Save changes</Button>
+          </CardFooter>
+        <
