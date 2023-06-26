@@ -11,4 +11,8 @@ export enum PromptTemplate {
 }
 
 export interface ConfigInterface {
-    device: D
+    device: Device;
+    llm_model_path: string;
+    gpu_layers: number;
+    prompt_template: PromptTemplate;
+}
