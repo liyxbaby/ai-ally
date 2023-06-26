@@ -25,4 +25,15 @@ export function MessageScroll() {
   return (
     <ScrollArea
       ref={scrollRef}
-      className="h-[70vh] md:h-[82vh] w-
+      className="h-[70vh] md:h-[82vh] w-full rounded-md border"
+    >
+      <div className="p-4 h-full">
+        {hasMoreMessages && (
+          <h4
+            className="mb-4 text-sm font-medium leading-none text-center text-primary cursor-pointer"
+            onClick={handleLoadMore}
+          >
+            Load previous messages
+          </h4>
+        )}
+        
