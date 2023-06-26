@@ -10,4 +10,19 @@ export function MessageScroll() {
 
   useEffect(() => {
     if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeigh
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight - scrollRef.current.clientHeight;
+    }
+  }, [messages]);
+
+  useEffect(() => {
+    setHasMoreMessages(messages.length >= 50);
+  }, [messages]);
+
+  const handleLoadMore = () => {
+    loadMoreMessages();
+  };
+
+  return (
+    <ScrollArea
+      ref={scrollRef}
+      className="h-[70vh] md:h-[82vh] w-
