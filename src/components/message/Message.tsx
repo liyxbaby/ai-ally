@@ -258,3 +258,104 @@ const AiMessage = ({ id, content, created_at, regenerate }: MessageProps) => {
       setDisplayedContent(oc);
     }
   };
+
+
+  return (
+    <div className='chat chat-start'>
+      <div className="chat-image avatar">
+        <div className="w-10 rounded-full">
+          <Avatar>
+            <AvatarImage src={companionData.avatar_path || companionAvatar} alt="Companion Avatar" />
+            <AvatarFallback>AI</AvatarFallback>
+          </Avatar>
+        </div>
+      </div>
+      <div className="chat-header">
+        {companionData.name || "Assistant"}
+        <time className="text-xs ml-3 opacity-50">{created_at}</time>
+      </div>
+      {regenerate ? 
+        <div className="flex flex-row gap-2 items-center">
+          <div className="chat-bubble">
+            {editing ? (
+              <Textarea value={editedContent} onChange={(e) => setEditedContent(e.target.value)} />
+            ) : (
+              <Markdown>{displayedContent}</Markdown>
+            )}
+            </div> 
+            {!editing && 
+              <TooltipProvider delayDuration={350}>
+                <Tooltip>
+                    <TooltipTrigger asChild>
+                      <button onClick={handleRegenerate}><RotateCw /></button>
+                    </TooltipTrigger>
+                    <TooltipContent side="right">
+                      <p>Regenerate message</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              }
+        </div>
+        :
+        <div className="chat-bubble">
+          {editing ? (
+            <Textarea value={editedContent} onChange={(e) => setEditedContent(e.target.value)} />
+          ) : (
+            <Markdown>{displayedContent}</Markdown>
+          )}
+        </div> 
+      }
+      <div className="chat-footer opacity-50 flex flex-row gap-2 mt-1">
+        {editing ? (
+          <>
+            <button onClick={handleSave}>Save</button>
+            <button onClick={handleCancel}>Cancel</button>
+          </>
+        ) : (
+          <>
+            <TooltipProvider delayDuration={250}>
+                <Tooltip>
+                    <TooltipTrigger asChild>
+                    <button onClick={handleEdit}><Pencil /></button>
+                    </TooltipTrigger>
+                    <TooltipContent side="bottom">
+                      <p>Edit message</p>
+                    </TooltipContent>
+                  </Tooltip>
+              </TooltipProvider>
+            {regenerate && 
+              <TooltipProvider delayDuration={250}>
+              <Tooltip>
+                  <TooltipTrigger asChild>
+                  <button onClick={handleTuning}><ThumbsUp /></button>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom">
+                    <p>Good response</p>
+                  </TooltipContent>
+                </Tooltip>
+            </TooltipProvider>
+            }
+            <TooltipProvider delayDuration={250}>
+                <Tooltip>
+                    <TooltipTrigger asChild>
+                    <button onClick={handleDelete}><Trash2 /></button>
+                    </TooltipTrigger>
+                    <TooltipContent side="bottom">
+                      <p>Delete message</p>
+                    </TooltipContent>
+                  </Tooltip>
+              </TooltipProvider>
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export function Message({ received, regenerate, id, content, created_at }: MessageScrollProps) {
+  return (
+    <>
+      {received ? <AiMessage key={id} content={content} id={id} created_at={created_at} regenerate={regenerate} />: <UserMessage key={id} content={content} id={id} created_at={created_at} regenerate={false} /> }
+    </>
+  );
+}
