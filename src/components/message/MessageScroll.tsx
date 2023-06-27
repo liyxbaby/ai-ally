@@ -42,4 +42,6 @@ export function MessageScroll() {
           ))}
         </div>
       </div>
-    </
+    </ScrollArea>
+  );
+}
