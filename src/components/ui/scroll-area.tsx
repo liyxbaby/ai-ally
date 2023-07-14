@@ -27,4 +27,13 @@ const ScrollArea = React.forwardRef<
       }}
       {...props}
     >
-      <Sc
+      <ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit]" ref={scrollRef}>
+        {children}
+      </ScrollAreaPrimitive.Viewport>
+      <ScrollBar inverted={inverted} />
+      <ScrollAreaPrimitive.Corner />
+    </ScrollAreaPrimitive.Root>
+  )
+})
+
+ScrollArea.displayName = ScrollAreaPrimitive.Root.displa
