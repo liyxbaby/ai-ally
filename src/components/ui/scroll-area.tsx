@@ -14,4 +14,17 @@ const ScrollArea = React.forwardRef<
 
   useLayoutEffect(() => {
     if (scrollRef.current) {
-      scrollRef.
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight - scrollRef.current.clientHeight;
+    }
+  }, [children]);
+
+  return (
+    <ScrollAreaPrimitive.Root
+      ref={ref}
+      className={cn("relative overflow-hidden", className)}
+      style={{
+        transform: inverted ? "rotate(180deg)" : undefined,
+      }}
+      {...props}
+    >
+      <Sc
