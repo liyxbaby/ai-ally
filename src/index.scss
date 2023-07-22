@@ -70,3 +70,19 @@ body {
   }
 }
 
+.chat {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  -moz-column-gap:.75rem;
+  column-gap:.75rem;
+  padding-top:.25rem;
+  padding-bottom:.25rem
+}
+.chat-image {
+  grid-row:span 2 / span 2;
+  align-self:flex-end
+}
+.chat-header {
+  grid-row-start:1;
+  font-size:.875rem;
+  line-height:1.25
