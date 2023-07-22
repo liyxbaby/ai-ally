@@ -103,3 +103,16 @@ body {
   min-height:2.75rem;
   min-width:2.75rem;
   --tw-bg-opacity: 1;
+  background-color:hsl(var(--secondary) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+}
+.chat-bubble:before {
+  position:absolute;
+  bottom:0px;
+  height:.75rem;
+  width:.75rem;
+  background-color:inherit;
+  content:"";
+  -webkit-mask-size:contain;
+  mask-size:contain;
+  -webkit-mask-repeat:no-repea
