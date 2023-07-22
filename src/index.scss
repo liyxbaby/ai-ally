@@ -85,4 +85,21 @@ body {
 .chat-header {
   grid-row-start:1;
   font-size:.875rem;
-  line-height:1.25
+  line-height:1.25rem
+}
+.chat-footer {
+  grid-row-start:3;
+  font-size:.875rem;
+  line-height:1.25rem
+}
+.chat-bubble {
+  position:relative;
+  display:block;
+  width:-moz-fit-content;
+  width:fit-content;
+  padding:.5rem 1rem;
+  max-width:90%;
+  border-radius:var(--rounded-box, 1rem);
+  min-height:2.75rem;
+  min-width:2.75rem;
+  --tw-bg-opacity: 1;
