@@ -9,4 +9,14 @@ export default defineConfig({
     rollupOptions: {
       output: {
         entryFileNames: `assets/[name]-4rust.js`,
-        chunkFileNames: `as
+        chunkFileNames: `assets/[name]-4rust.js`,
+        assetFileNames: `assets/[name]-4rust.[ext]`
+      }
+    }
+  },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+})
