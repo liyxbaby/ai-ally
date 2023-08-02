@@ -26,4 +26,6 @@ This repository includes:
 - Customisation - Modify the AI's name, personality, appearance and the first message sent. Also modify short term and long term memory of AI.
 - Short-term memory - AI can remember recently received or sent messages.
 - Long-term memory - AI can memorise conversations even thousands of prompts later by associating diverse terms with words, sentences, or even dates.
-- Real-time learning - AI c
+- Real-time learning - AI can create "memories" and learn about people it interacts with during chats.
+- Feed AI custom data - use the API to save fragments of documents, articles, song lyrics, poems etc. to the AI's long-term memory.
+- Roleplay - the AI chatbot can (if activated), perform actions within asterisks (*) like *moves closer*, *waves h
