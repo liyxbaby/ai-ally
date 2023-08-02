@@ -11,4 +11,11 @@ Please download the binary fitting your OS and device from [here](https://github
 
 ![webui screenshot](https://raw.githubusercontent.com/liyxbaby/ai-ally/main/public/webui_screenshot.png)
 
-![webui screenshot](https://raw.githubusercon
+![webui screenshot](https://raw.githubusercontent.com/liyxbaby/ai-ally/main/public/webui_screenshot2.png)
+
+![License](https://img.shields.io/github/license/liyxbaby/ai-ally)
+![Downloads](https://img.shields.io/github/downloads/liyxbaby/ai-ally/total)
+
+## Features
+This repository includes:
+- Local functioning - doesn't need other API keys for service which makes it complet
