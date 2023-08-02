@@ -30,4 +30,9 @@ This repository includes:
 - Feed AI custom data - use the API to save fragments of documents, articles, song lyrics, poems etc. to the AI's long-term memory.
 - Roleplay - the AI chatbot can (if activated), perform actions within asterisks (*) like *moves closer*, *waves hello*.
 - Load character files in .json or .png (character cards) format. You can create your own using [this tool](https://github.com/liyxbaby/character-factory).
-- Use {{char}} and {{user}} in the companion's persona, example dialogue, first message and user persona. If you change the username or companion name, you don'
+- Use {{char}} and {{user}} in the companion's persona, example dialogue, first message and user persona. If you change the username or companion name, you don't need to update these as it will auto-update.
+- Time - AI Chatbot can get information about the current time from the computer. Its long-term memory can remember which conversations happened on which date.
+
+## Supported AI models
+A small list of tested and functioning AI models include:
+- [Mistral 7B](https://huggingfa
