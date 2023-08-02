@@ -18,4 +18,6 @@ Please download the binary fitting your OS and device from [here](https://github
 
 ## Features
 This repository includes:
-- Local functioning - doesn't need other API keys for service which makes it complet
+- Local functioning - doesn't need other API keys for service which makes it completely free (except for power costs - your computer needs to operate somehow). It also doesn't need internet to function.
+- High privacy - All chats are saved locally in SQLite database. Hence, your AI's characteristics and your conversations remain on your PC.
+- [API](/docs/api_docs.md) - can act as a ba
