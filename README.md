@@ -28,4 +28,6 @@ This repository includes:
 - Long-term memory - AI can memorise conversations even thousands of prompts later by associating diverse terms with words, sentences, or even dates.
 - Real-time learning - AI can create "memories" and learn about people it interacts with during chats.
 - Feed AI custom data - use the API to save fragments of documents, articles, song lyrics, poems etc. to the AI's long-term memory.
-- Roleplay - the AI chatbot can (if activated), perform actions within asterisks (*) like *moves closer*, *waves h
+- Roleplay - the AI chatbot can (if activated), perform actions within asterisks (*) like *moves closer*, *waves hello*.
+- Load character files in .json or .png (character cards) format. You can create your own using [this tool](https://github.com/liyxbaby/character-factory).
+- Use {{char}} and {{user}} in the companion's persona, example dialogue, first message and user persona. If you change the username or companion name, you don'
