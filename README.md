@@ -22,4 +22,5 @@ This repository includes:
 - High privacy - All chats are saved locally in SQLite database. Hence, your AI's characteristics and your conversations remain on your PC.
 - [API](/docs/api_docs.md) - can act as a backend for your projects that requires LLMs, custom AI chatbots or custom AI characters.
 - Speed - coded in Rust to promise high efficiency when considering CPU, GPU and RAM usages. It removes the need to employ weaker AI models.
-- Convenience - everything can be modified in the web user interface and all com
+- Convenience - everything can be modified in the web user interface and all components are compiled into a single binary file that can be launched on your system. No need to grapple with a multitude of confusing files or deal with incorrect library/interpreter/framework versions.
+- Customisation - Modify the AI's name, personality, appearance and the first message sent. Also 
