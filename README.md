@@ -47,4 +47,7 @@ The API documentation can be found [here](/docs/api_docs.md).
 - [local assistant](https://github.com/liyxbaby/local-assistant) - LLM-powered AI virtual assistant
 - [matrix ally bot](https://github.com/liyxbaby/matrix-ally-bot) - AI chat-bot running on Matrix protocol.
 
-## Compil
+## Compilation from source code:
+To build the executable file, you need [Node.js and npm](https://nodejs.org/), [Rust and cargo](https://www.rust-lang.org/).
+
+To support CUDA, OpenCL and Metal you must follow similar steps to those [in this documentation](https://github.com/rustformers/llm/blob/main/doc/accele
