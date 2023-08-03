@@ -50,4 +50,26 @@ The API documentation can be found [here](/docs/api_docs.md).
 ## Compilation from source code:
 To build the executable file, you need [Node.js and npm](https://nodejs.org/), [Rust and cargo](https://www.rust-lang.org/).
 
-To support CUDA, OpenCL and Metal you must follow similar steps to those [in this documentation](https://github.com/rustformers/llm/blob/main/doc/accele
+To support CUDA, OpenCL and Metal you must follow similar steps to those [in this documentation](https://github.com/rustformers/llm/blob/main/doc/acceleration-support.md).
+
+Clone the repository using the command:
+```
+git clone https://github.com/liyxbaby/ai-ally
+```
+Navigate to the folder:
+```
+cd ai-ally/
+```
+Install node modules:
+```
+npm i
+```
+Compile everything into one binary:
+```
+npm run build-full
+```
+or
+
+Compile everything into one binary with CUDA support:
+```
+npm run build-full-cu
