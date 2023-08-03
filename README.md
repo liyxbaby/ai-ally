@@ -72,4 +72,20 @@ or
 
 Compile everything into one binary with CUDA support:
 ```
-npm run build-full-cu
+npm run build-full-cuda
+```
+or
+
+Compile everything into one binary with OpenCL support:
+```
+npm run build-full-opencl
+```
+or
+
+Compile everything into one binary with Metal support:
+```
+npm run build-full-metal
+```
+(After compilation, the binary should be in ai-ally/backend/target/release).
+
+Then, follow the same steps as given for [installation](#installation).
