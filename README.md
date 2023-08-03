@@ -35,4 +35,10 @@ This repository includes:
 
 ## Supported AI models
 A small list of tested and functioning AI models include:
-- [Mistral 7B](https://huggingfa
+- [Mistral 7B](https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-GGUF)
+- [Zephyr 7B Beta](https://huggingface.co/TheBloke/zephyr-7B-beta-GGUF)
+- [Llama 3 8B Instruct](https://huggingface.co/MaziyarPanahi/Meta-Llama-3-8B-Instruct-GGUF)
+and many many other LLM models in .gguf format.
+
+## API documentation
+The API documentation can be fo
