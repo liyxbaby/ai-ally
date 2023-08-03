@@ -41,4 +41,10 @@ A small list of tested and functioning AI models include:
 and many many other LLM models in .gguf format.
 
 ## API documentation
-The API documentation can be fo
+The API documentation can be found [here](/docs/api_docs.md).
+
+## Projects based on ai-ally Backend/API/Library
+- [local assistant](https://github.com/liyxbaby/local-assistant) - LLM-powered AI virtual assistant
+- [matrix ally bot](https://github.com/liyxbaby/matrix-ally-bot) - AI chat-bot running on Matrix protocol.
+
+## Compil
